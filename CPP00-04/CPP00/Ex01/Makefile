@@ -1,5 +1,5 @@
 #   NAME
-NAME = megaphone
+NAME = phonebook
 
 #---------------#
 #	includes
@@ -51,7 +51,7 @@ all : $(NAME)
 	@echo "$(C_G)Compilation $(NAME) STATUS [OK]$(RESET)"
 
 $(NAME) : $(OBJ)
-	@$(CC) $(FLAGS) $(FLAG_CPP) -o $(NAME) $(OBJ)
+	@$(CC) $(FLAGS) $(FLAG_CPP) -o $(NAME) main.cpp $(OBJ)
 
 $(OBJS)/%.o : $(SRCS)/%.cpp
 	@mkdir -p $(OBJS)
