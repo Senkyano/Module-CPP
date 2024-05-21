@@ -12,7 +12,7 @@ INCLUDES =	includes
 #-----------------------#
 RM = rm -fr
 CC = c++
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -I $(INCLUDES)
 FLAG_CPP = -std=c++98
 # FLAG_READLINE = -lreadline
 # FLAG_PHILO = -lpthread -D_REENTRANT
@@ -39,7 +39,7 @@ RESET = \033[0m
 #--------------------------------------#
 #		File
 #-----------------------#
-FILE_CPP =	megaphone.cpp
+FILE_CPP =	
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))

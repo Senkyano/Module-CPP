@@ -1,7 +1,8 @@
-DOCUMENTATION
+# DOCUMENTATION
 
 En general ca marche comme en C structure, operation, boucle et autres
 
+## Les differentes sortie d'ecriture + "free"
 	- std::count : sortie standard (dans un buffer)
 	- std::cerr : sortie standard d'erreur (affichage immédiat)
 	- std::clog : sortie standard d'erreur (dans un buffer)
@@ -9,13 +10,17 @@ En general ca marche comme en C structure, operation, boucle et autres
 	- std::endl : retour à la ligne + vidage du buffer (flush)
 	- std::flush : vidage du buffer
 
-
+## Déclaration de Variable en C++
 
 	pour declarer une variable c'est la meme chose que en C apart une chose ce sont
 	les string ou nous devons les declarer comme suit: 
 														- std::string Nom_Variable{"VALEUR"};
 
-	Nous avons aussi la varaible auto qui permet definir le type de la variable automatiquement
+	Nous avons aussi la varaible auto qui permet definir le type de la variable automatiquement :
+														- auto Nom_de_la_variable.
+
+## Recuperation de saisie
+
 	Saisie de l'utilisateur:
 														- std::cin >> Nom_Variable;
 														- std::getline(entree, 	Nom_Variable, limiteur);
@@ -44,3 +49,40 @@ En general ca marche comme en C structure, operation, boucle et autres
 										- namespace (Nom_macro) = (Nom_du_namespace);
 										ou 
 										- using (Nom_macro) = (Nom_du_namespace);
+	
+## Structure et Class
+
+	on vas surtout etudier la class car les structures ressemble meme ils sont identique que en C
+
+	Les structures sont par defaut une données (publique).
+
+	Les class :
+		class Nom_de_la_class
+		{
+			Les niveaux d'acces :
+									- Publique
+									- Priver
+									- Proteger
+			public:
+					Nom_du_constructeur() = delete;
+					Nom_du_constructeur(const Nom_de_la_class& ..);
+					Nom_du_constructeur_deplacement(Nom_de_la_class&& ..);
+					~Nom_du_destructeur();
+			private:
+			protected:
+		}
+	Nous devons imperativement creer le constructeur et un destructeur mais si on le fait c'est fait automatiquement mais on peut empecher que ca se construise automatiquement en rajoutant "= delete" comme si-dessus ensuite pour proceder aux constructeur ca seras fait comme ce ci :
+													Nom_de_la_class::Nom_du_constructeur_lier_a_la_class.
+													{
+														specifier comment il se construit
+													}
+		construction d'une copie d'un constructeur :
+
+											Nom_de_la_class::Nom_du_constructeur_lier_a_la_class(const Nom_de_la_class& ..).
+											{
+												specifier comment il se construit
+											}
+							
+		constructeur de deplacement permet de transmettre ces donnees a un autre objet qui se feras pareillement que ci-dessus avec quelque petites differences
+
+	Les destructeurs commence par une tilde "~" l'implementation ce fait comme le constructeur.

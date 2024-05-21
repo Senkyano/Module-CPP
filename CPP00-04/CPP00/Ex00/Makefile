@@ -18,7 +18,7 @@ FLAG_CPP = -std=c++98
 # FLAG_PHILO = -lpthread -D_REENTRANT
 
 #--------------------------------------#
-#       directory
+#       directoryls
 #-----------------------#
 SRCS = srcs
 OBJS = objs
