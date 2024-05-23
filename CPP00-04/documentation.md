@@ -2,6 +2,8 @@
 
 En general ca marche comme en C structure, operation, boucle et autres
 
+convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
+
 ## Les differentes sortie d'ecriture + "free"
 	- std::count : sortie standard (dans un buffer)
 	- std::cerr : sortie standard d'erreur (affichage immédiat)
