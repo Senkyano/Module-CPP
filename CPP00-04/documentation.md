@@ -86,3 +86,37 @@ En general ca marche comme en C structure, operation, boucle et autres
 		constructeur de deplacement permet de transmettre ces donnees a un autre objet qui se feras pareillement que ci-dessus avec quelque petites differences
 
 	Les destructeurs commence par une tilde "~" l'implementation ce fait comme le constructeur.
+
+### Les attribue et Methodes
+
+	Les attribues sont en quelque sorte en appeller une fonction pour initialiser une une varaible qui se trouve dans le domaine du private. 
+		exemple :
+					Nom_de_la_class::Nom_Du_Constructeur(_Variable_ Nom_Variable) : _Nom_de_Attribue_(Nom_Variable)
+					{
+						(ou on peut faire sous cette forme)
+							this->_Nom_de_Attribue_ = (Nom_Variable);
+					}
+		
+	Une methode :
+		une fonction qui appartient a la class comme le constructeur mais que on l'appelle.
+
+	on peut ajoute un noexcept a la fin du nom de la fonction qui va dire que la fonction ne prend pas d'expection ou meme const qui voudras dire qu'il ne prendras que des constantes.
+					-> Nom_de_la_class::Nom_Du_Constructeur(_Variable_ Nom_Variable) noexpect
+
+### Encapsulation
+
+	Accesseur et Modificateur, on as des attributs qui sont en private, mais nous ne pouvons pas acceder classiquement comme un C avec les structures, en fessant Nom_de_La_class/Structure._Nom_Attribue_;
+
+	Pour creer un accesseur c'est une fonction qui vas se contruire comme si-dessous :
+				-> _Type_de_l'attribue_		Nom_deLa_class::Nom_de_la_fonction() (un parametre comme const)
+				{
+					return (this->Nom_de_l'attribue);
+				}
+		Le this permet de dire vraiment que vont celui-la specifiquement de tel classe
+
+	convention si on veut modifier un attribue il faut mettre en nom de fonction "Set"
+				ca seras un type ->	void	Set"Nom_de_La_fonction"(_Type_attribue_  Nom_de_L'atttribue/variable);
+
+
+Fonction :
+	_Nom_Attriube_.lenght() = connaitre la longueur de la chaine de caracteres
