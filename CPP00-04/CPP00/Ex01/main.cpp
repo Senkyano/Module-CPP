@@ -6,17 +6,20 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:39:39 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/21 22:16:43 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/05/23 23:57:24 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.hpp"
+#include "phonebook.hpp"
+#include "contact.hpp"
 
 void	print_menu(void);
 
 int	main(int argc, char **argv)
 {
 	std::string	input;
+	Phonebook	Phone;
 
 	(void)argv;
 	if (argc != 1)
@@ -33,14 +36,14 @@ int	main(int argc, char **argv)
 			std::getline(std::cin, input);
 			if (strcmp(input.c_str(), "EXIT") == 0)
 				return (0);
-			else if (strcmp(input.c_str(), "ADD") == 0) // input.c_str = permet de convertir un string en char*
+			else if (strcmp(input.c_str(), "ADD") == 0)
 			{
-				// Fonction d'ajout
+				Phone.addContact();
 				break ;
 			}
 			else if (strcmp(input.c_str(), "SEARCH") == 0)
 			{
-				// Fonction de recherche
+				Phone.displayContacts();
 				break ;
 			}
 			else
@@ -52,9 +55,9 @@ int	main(int argc, char **argv)
 
 void	print_menu(void)
 {
-	std::cout << "#============= "<< GR << "MENU" << RST << " =============#" << std::endl;
-	std::cout << "| " << GR << "ADD" << BLU << "    . Create a new contact" << RST << "  |" << std::endl;
-	std::cout << "| " << GR << "SEARCH"<< BLU << " . Search a contact"<< RST << "      |" << std::endl;
-	std::cout << "| " << GR << "EXIT" << BLU << "   . Exit" << RST << "                  |" << std::endl;
-	std::cout << "#================================#" << std::endl;
+	std::cout << "#================ "<< GR << "MENU" << RST << " ================#" << std::endl;
+	std::cout << "| " << GR << "ADD" << BLU << "    . Create a new contact" << RST << "        |" << std::endl;
+	std::cout << "| " << GR << "SEARCH"<< BLU << " . Search a contact"<< RST << "            |" << std::endl;
+	std::cout << "| " << GR << "EXIT" << BLU << "   . Exit" << RST << "                        |" << std::endl;
+	std::cout << "#======================================#" << std::endl;
 }
