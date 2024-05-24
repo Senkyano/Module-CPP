@@ -122,3 +122,17 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 
 Fonction :
 	_Nom_Attriube_.lenght() = connaitre la longueur de la chaine de caracteres
+	
+	attribue New = "allocation" 
+	delete = "suppression d'un pointeur"
+	delete [] = "suppression d'un tableau de pointeur"
+
+REFERENCE / POINTEUR :
+	Les pointeurs reste pareil que en C.
+	Il y a de reference en cpp qui sont designer par une variable comme suit :
+			_TYPE_	&_Nom_de_la_variable_ = _Nom_d'une_autre_Variable_;
+		Et il faut savoir que si on l'initialise ou il ne peut plus etre redefinie plus tard et nous ne pouvons pas le definir a NULL.
+
+	Il y a 2 type de reference les lvalue = & et les rvalue = &&
+		lvalue font reference a une variable deja nommer
+		rvalue correspond a une reference universel qui peut un lvalue ou a une variable temporaire.
