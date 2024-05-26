@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:00:53 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/24 17:07:40 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/05/26 14:50:12 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 Weapon::Weapon(std::string type)
 {
 	this->type = type;
+	// std::cout << "Weapon created" << std::endl;
 }
 
 Weapon::~Weapon()
 {
-	
+	// std::cout << "Weapon destroyed" << std::endl;
 }
 
-const void	*Weapon::getType(void)
+const std::string	Weapon::getType(void)
 {
-	return (&this->type);
+	return (this->type);
 }
 
 void	Weapon::setType(std::string type)

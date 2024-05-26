@@ -39,7 +39,9 @@ RESET = \033[0m
 #--------------------------------------#
 #		File
 #-----------------------#
-FILE_CPP =	
+FILE_CPP =	HumanA.cpp \
+			HumanB.cpp \
+			weapon.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))
@@ -51,7 +53,7 @@ all : $(NAME)
 	@echo "$(C_G)Compilation $(NAME) STATUS [OK]$(RESET)"
 
 $(NAME) : $(OBJ)
-	@$(CC) $(FLAGS) $(FLAG_CPP) -o $(NAME) main.cpp
+	@$(CC) $(FLAGS) $(FLAG_CPP) -o $(NAME) main.cpp $(OBJ)
 
 $(OBJS)/%.o : $(SRCS)/%.cpp
 	@mkdir -p $(OBJS)

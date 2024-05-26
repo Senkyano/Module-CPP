@@ -73,6 +73,9 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 			private:
 			protected:
 		}
+
+### Constructeur
+
 	Nous devons imperativement creer le constructeur et un destructeur mais si on le fait c'est fait automatiquement mais on peut empecher que ca se construise automatiquement en rajoutant "= delete" comme si-dessus ensuite pour proceder aux constructeur ca seras fait comme ce ci :
 													Nom_de_la_class::Nom_du_constructeur_lier_a_la_class.
 													{
@@ -88,6 +91,8 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 		constructeur de deplacement permet de transmettre ces donnees a un autre objet qui se feras pareillement que ci-dessus avec quelque petites differences
 
 	Les destructeurs commence par une tilde "~" l'implementation ce fait comme le constructeur.
+	
+	Quand nous appellons un constructeur il se créer mais des que on as plus besoin de lui il va directement se detruire.
 
 ### Les attribue et Methodes
 

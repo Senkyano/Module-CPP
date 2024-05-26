@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 16:52:09 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/24 17:10:20 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/05/26 14:34:34 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ class	Weapon
 	public:
 		Weapon(std::string type);
 		~Weapon();
-		const void	*getType();
-		void		setType(std::string type);
+
+		const std::string	getType();
+		void				setType(std::string type);
+
 	private:
 		std::string	type;
 };
