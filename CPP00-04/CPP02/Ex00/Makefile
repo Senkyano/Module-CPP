@@ -1,5 +1,5 @@
 #   NAME
-NAME = Client_Aigri
+NAME = Canon
 
 #---------------#
 #	includes
@@ -39,7 +39,7 @@ RESET = \033[0m
 #--------------------------------------#
 #		File
 #-----------------------#
-FILE_CPP =	Harl.cpp
+FILE_CPP =	canonique.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))

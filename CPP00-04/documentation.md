@@ -94,6 +94,31 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 	
 	Quand nous appellons un constructeur il se créer mais des que on as plus besoin de lui il va directement se detruire.
 
+#### Copy Constructeur et Assignement par copie
+
+	declaration d'un copie de constructeur :
+			_Nom_du_Constructeur_(const _nom_du_constructeur &variable);
+
+````
+Canonique::Canonique(const Canonique &value)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = value;
+}
+````
+
+	Assignement par copie :
+			_Nom_du_constructeur_ &operator=(const _nom_du_constructeur &variable)
+
+````
+Canonique &Canonique::operator=(const Canonique &value)
+{
+	std::cout << "Assignation operator called" << std::endl;
+	this->value = value.getRawBits();
+	return (*this);
+}
+````
+
 ### Les attribue et Methodes
 
 	Les attribues sont en quelque sorte en appeller une fonction pour initialiser une une varaible qui se trouve dans le domaine du private. 
