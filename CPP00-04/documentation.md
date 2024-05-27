@@ -124,6 +124,13 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 	convention si on veut modifier un attribue il faut mettre en nom de fonction "Set"
 				ca seras un type ->	void	Set"Nom_de_La_fonction"(_Type_attribue_  Nom_de_L'atttribue/variable);
 
+## Tableau de pointeur de fonction
+
+	On vas creer une fonction pour avoir plusieur niveau et que chaque niveau on vas faire une methode differente.
+	Par exemple on vas prendre la methode Harl, Harl auras 4 script pour ces 4 differents niveaux : Debug, info, warning, error.
+	On auras un aussi une fonction qui vas excuter avec un certain niveau.
+	dans cette fonction on auras un tableau de fonction qui vas definir le niveau de ca plainte.
+	Pour ensuite excuter le niveau en question.
 
 Fonction :
 	_Nom_Attriube_.lenght() = connaitre la longueur de la chaine de caracteres
