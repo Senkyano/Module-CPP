@@ -131,6 +131,25 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 	On auras un aussi une fonction qui vas excuter avec un certain niveau.
 	dans cette fonction on auras un tableau de fonction qui vas definir le niveau de ca plainte.
 	Pour ensuite excuter le niveau en question.
+	
+```
+Void	Harl::complain(std::string level)
+{
+	void	(Harl::*complain[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	levelHarl[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int		i = 0;
+
+	while (i < 4)
+	{
+		if (level == levelHarl[i])
+		{
+			(this->*complain[i])();
+			break ;
+		}
+		i++;
+	}
+}
+```
 
 Fonction :
 	_Nom_Attriube_.lenght() = connaitre la longueur de la chaine de caracteres
