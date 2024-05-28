@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:29:17 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/23 23:58:11 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/05/28 11:39:43 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,20 +112,20 @@ void	Phonebook::displayContacts(void)
 	int			i;
 
 	i = -1;
-	std::cout << "		#==============================================#" << std::endl;
-	std::cout << "		| Index | First Name | Last Name  | Nickname   |" << std::endl;
+	std::cout << "		#===================================================#" << std::endl;
+	std::cout << "		|    Index   | First Name | Last Name  | Nickname   |" << std::endl;
 	while (++i < 8)
 	{
-		std::cout << "		#----------------------------------------------#" << std::endl;
-		std::cout << "		|   " << i + 1 << "   | ";
+		std::cout << "		#---------------------------------------------------#" << std::endl;
+		std::cout << "		|     " << i + 1 << "      | ";
 		getInfo(contacts[i].getFirstName());
 		getInfo(contacts[i].getLastName());
 		getInfo(contacts[i].getNickname());
 		std::cout << std::endl;
 	}
-	std::cout << "		#==============================================#" << std::endl;
-	std::cout << "		|                     " << GR <<"EXIT" << RST << "                     |" << std::endl;
-	std::cout << "		#==============================================#" << std::endl;
+	std::cout << "		#====================================================#" << std::endl;
+	std::cout << "		|                       " << GR <<"EXIT" << RST << "                        |" << std::endl;
+	std::cout << "		#====================================================#" << std::endl;
 	while (1)
 	{
 		std::cout << PUR << "╚> " << RST;
