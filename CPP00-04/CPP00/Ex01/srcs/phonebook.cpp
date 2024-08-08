@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:29:17 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/28 11:39:43 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/08 19:43:58 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ void	Phonebook::displayContacts(void)
 		std::getline(std::cin, str);
 		if (strcmp(str.c_str(), "EXIT") == 0)
 			break ;
+		else if (std::cin.eof() || std::cin.fail())
+			return ;
 		else if (str[0] >= '1' && str[0] <= '8' && str[1] == '\0')
 		{
 			i = str[0] - '0';

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:39:39 by rihoy             #+#    #+#             */
-/*   Updated: 2024/06/17 12:53:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/08 19:43:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int	main(int argc, char **argv)
 			else if (strcmp(input.c_str(), "SEARCH") == 0)
 			{
 				Phone.displayContacts();
+				if (std::cin.eof() || std::cin.fail())
+					return (0);
 				break ;
 			}
 			else
