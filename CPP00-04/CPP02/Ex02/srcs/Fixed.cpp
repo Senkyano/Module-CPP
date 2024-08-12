@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 22:28:00 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/12 14:15:38 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/12 13:15:46 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/12 14:45:16 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ const int Fixed::constValue = 8;
 Fixed::Fixed()
 {
 	std::cout << "Default constructor called" << std::endl;
+	this->value = 0;
 }
 
 Fixed::Fixed(const int value)
@@ -48,6 +49,45 @@ Fixed::Fixed(const Fixed &value)
 	*this = value;
 }
 
+// Comparison operators
+
+bool	Fixed::operator>(const Fixed &value) const
+{
+	return (this->value > value.getRawBits());
+}
+
+bool	Fixed::operator<(const Fixed &value) const
+{
+	return (this->value < value.getRawBits());
+}
+
+bool	Fixed::operator>=(const Fixed &value) const
+{
+	return (this->value >= value.getRawBits());
+}
+
+bool	Fixed::operator<=(const Fixed &value) const
+{
+	return (this->value <= value.getRawBits());
+}
+
+bool	Fixed::operator==(const Fixed &value) const
+{
+	return (this->value == value.getRawBits());
+}
+
+bool	Fixed::operator!=(const Fixed &value) const
+{
+	return (this->value != value.getRawBits());
+}
+
+// Arithmetic operators
+
+Fixed	Fixed::operator+(const Fixed &value) const
+{
+	return (Fixed(this->toFloat() + value.toFloat()));
+}
+
 // Assignation operator
 
 Fixed &Fixed::operator=(const Fixed &value)
@@ -56,6 +96,8 @@ Fixed &Fixed::operator=(const Fixed &value)
 	this->value = value.getRawBits();
 	return (*this);
 }
+
+// Non-member functions
 
 std::ostream	&operator<<(std::ostream &o, Fixed const &value)
 {
@@ -77,7 +119,7 @@ float	Fixed::toFloat(void) const
 
 int		Fixed::toInt(void) const
 {
-	return (this->value >> this->constValue);
+	return (this->value);
 }
 
 void	Fixed::setRawBits(int const raw)

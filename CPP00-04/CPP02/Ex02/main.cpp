@@ -6,7 +6,17 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:13:18 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/27 14:13:19 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/12 14:17:28 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Fixed.hpp"
+
+int	main(void)
+{
+	Fixed a;
+	// Fixed b(10);
+
+	std::cout << a << std::endl;
+	return (0);
+}
