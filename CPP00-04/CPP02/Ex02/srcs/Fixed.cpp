@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:15:46 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/12 14:45:16 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/12 14:46:38 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,23 @@ Fixed	Fixed::operator+(const Fixed &value) const
 {
 	return (Fixed(this->toFloat() + value.toFloat()));
 }
+
+Fixed	Fixed::operator-(const Fixed &value) const
+{
+	return (Fixed(this->toFloat() - value.toFloat()));
+}
+
+Fixed	Fixed::operator*(const Fixed &value) const
+{
+	return (Fixed(this->toFloat() * value.toFloat()));
+}
+
+Fixed	Fixed::operator/(const Fixed &value) const
+{
+	return (Fixed(this->toFloat() / value.toFloat()));
+}
+
+// Increment and decrement operators
 
 // Assignation operator
 
