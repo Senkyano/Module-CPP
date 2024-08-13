@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:29:17 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/13 11:11:45 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/13 18:09:59 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,21 +158,28 @@ void	Phonebook::displayContacts(void)
 void	Phonebook::getInfo(std::string str)
 {
 	int			i;
+	int			right;
 	int			length;
 
 	length = str.length();
-	i = 0;
-	while (i < 10 && str[i] != '\0')
+	right = 10 - length;
+	if (right > 0)
+	{
+		while (right-- > 0)
+			std::cout << " ";
+		right = length - 10;
+	}
+	else
+		right = 0;
+	i = -1;
+	while (str[++i] != '\0')
 	{
 		std::cout << str[i];
-		if (i == 9 && length > 10)
+		if (i + right == 8 && length > 10)
 		{
 			std::cout << ".";
 			break ;
 		}
-		i++;
 	}
-	while (i++ < 10 && length < 10)
-		std::cout << " ";
 	std::cout << " | ";
 }
