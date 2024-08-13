@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 16:29:17 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/08 19:43:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/13 11:11:45 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ void	Phonebook::addContact(void)
 	{
 		std::cout << "Enter first name : ";
 		std::getline(std::cin, line);
-		if (line.empty())
+		if (line.empty() && !std::cin.eof())
 			std::cout << RED << "First name cannot be empty." << RST << std::endl;
+		else if (std::cin.eof() || std::cin.fail())
+			return ;
 		else
 		{
 			this->contacts[lastAdded].setFirstName(line);
@@ -48,8 +50,10 @@ void	Phonebook::addContact(void)
 	{
 		std::cout << "Enter last name : ";
 		std::getline(std::cin, line);
-		if (line.empty())
+		if (line.empty() && !std::cin.eof())
 			std::cout << RED << "Last name cannot be empty." << RST << std::endl;
+		else if (std::cin.eof() || std::cin.fail())
+			return ;
 		else
 		{
 			this->contacts[lastAdded].setLastName(line);
@@ -60,8 +64,10 @@ void	Phonebook::addContact(void)
 	{
 		std::cout << "Enter nickname : ";
 		std::getline(std::cin, line);
-		if (line.empty())
+		if (line.empty() && !std::cin.eof())
 			std::cout << RED << "Nickname cannot be empty." << RST << std::endl;
+		else if (std::cin.eof() || std::cin.fail())
+			return ;
 		else
 		{
 			this->contacts[lastAdded].setNickname(line);
@@ -72,8 +78,10 @@ void	Phonebook::addContact(void)
 	{
 		std::cout << "Enter phone number : ";
 		std::getline(std::cin, line);
-		if (line.empty())
+		if (line.empty() && !std::cin.eof())
 			std::cout << RED << "Phone number cannot be empty." << RST << std::endl;
+		else if (std::cin.eof() || std::cin.fail())
+			return ;
 		else
 		{
 			this->contacts[lastAdded].setPhoneNumber(line);
@@ -84,8 +92,10 @@ void	Phonebook::addContact(void)
 	{
 		std::cout << "Enter darkest secret : ";
 		std::getline(std::cin, line);
-		if (line.empty())
+		if (line.empty() && !std::cin.eof())
 			std::cout << RED << "Darkest secret cannot be empty." << RST << std::endl;
+		else if (std::cin.eof() || std::cin.fail())
+			return ;
 		else
 		{
 			this->contacts[lastAdded].setDarkestSecret(line);
