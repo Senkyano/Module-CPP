@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 12:39:39 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/08 19:43:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/13 11:15:59 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,16 @@ int	main(int argc, char **argv)
 			std::cout << PUR << "	╚> " << RST;
 			std::getline(std::cin, input);
 			if (input.empty() && !std::cin.eof())
-			{
 				std::cout << RED << "	   Please enter a command" << RST << std::endl;
-			}
 			else if (std::cin.eof() || std::cin.fail())
-			{
 				return (0);
-			}
 			if (strcmp(input.c_str(), "EXIT") == 0)
 				return (0);
 			else if (strcmp(input.c_str(), "ADD") == 0)
 			{
 				Phone.addContact();
+				if (std::cin.eof() || std::cin.fail())
+					return (0);
 				break ;
 			}
 			else if (strcmp(input.c_str(), "SEARCH") == 0)
@@ -57,9 +55,7 @@ int	main(int argc, char **argv)
 				break ;
 			}
 			else
-			{
 				std::cout << RED << "	   Invalid command" << RST << std::endl;
-			}
 		}
 	}
 	return (0);
