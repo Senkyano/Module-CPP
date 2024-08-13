@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 13:15:46 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/12 14:46:38 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/13 09:40:11 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,16 @@ const int Fixed::constValue = 8;
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
 	this->value = value << this->constValue;
 }
 
 Fixed::Fixed(const float value)
 {
-	std::cout << "Float constructor called" << std::endl;
 	this->value = roundf(value * (1 << this->constValue));
 }
 
@@ -38,14 +35,13 @@ Fixed::Fixed(const float value)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+
 }
 
 // Copy constructor
 
 Fixed::Fixed(const Fixed &value)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = value;
 }
 
@@ -105,11 +101,58 @@ Fixed	Fixed::operator/(const Fixed &value) const
 
 // Increment and decrement operators
 
+Fixed	&Fixed::operator++(void)
+{
+	this->value++;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed tmp(*this);
+	operator++();
+	return (tmp);
+}
+
+Fixed	&Fixed::operator--(void)
+{
+	this->value--;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	operator--();
+	return (tmp);
+}
+
+// Min and Max
+
+Fixed	&Fixed::min(Fixed &a, Fixed &b)
+{
+	return (a < b ? a : b);
+}
+
+Fixed	&Fixed::max(Fixed &a, Fixed &b)
+{
+	return (a > b ? a : b);
+}
+
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a < b ? a : b);
+}
+
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a > b ? a : b);
+}
+
 // Assignation operator
 
 Fixed &Fixed::operator=(const Fixed &value)
 {
-	std::cout << "Copy assignation operator called" << std::endl;
 	this->value = value.getRawBits();
 	return (*this);
 }
