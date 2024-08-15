@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/13 10:11:50 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/15 14:42:58 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/15 14:08:37 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/15 14:11:33 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+
 #include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
+#include <iostream>
 
-int		main()
+class	FragTrap : public ClapTrap
 {
-	ClapTrap	ClapTrap("Tove lo");
+	private :
+		
+	public :
+		FragTrap(std::string name);
+		~FragTrap();
 
-	ScavTrap	ScavTrap("Serena");
-	ClapTrap.attack("Skag");
-	ClapTrap.takeDamage(10);
-	ClapTrap.beRepaired(5);
-	std::cout << std::endl;
-	ScavTrap.guardGate();
-	ScavTrap.attack("Skag");
-	ScavTrap.takeDamage(40);
-	ScavTrap.guardGate();
-	ScavTrap.beRepaired(30);
-	return (0);
-}
+		void	highFivesGuys(void);
+};
+
+#endif

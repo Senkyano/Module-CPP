@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 10:11:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/14 14:48:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/15 14:47:23 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ ClapTrap::ClapTrap(const std::string name)
 	this->health = 10;
 	this->engergy = 10;
 	this->attack_damage = 0;
-	std::cout << this->name << " appears !" << std::endl;
+	std::cout << "ClapTrap " << this->name << " appears !" << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << this->name << " disappears !" << std::endl;
+	std::cout << "ClapTrap " << this->name << " disappears !" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string &target)
