@@ -41,7 +41,8 @@ RESET = \033[0m
 #-----------------------#
 FILE_CPP =	Cat.cpp \
 			Dog.cpp \
-			Animal.cpp
+			Animal.cpp \
+			Brain.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))

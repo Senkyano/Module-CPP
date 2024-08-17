@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:52:10 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/15 16:55:13 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/17 13:55:24 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@
 #include "Animal.hpp"
 
 class Cat : public Animal
-{
+{	
+	protected :
+
 	private :
 
 	public :
 		Cat();
 		~Cat();
+
+		void		makeSound() const;
 };
 
 #endif

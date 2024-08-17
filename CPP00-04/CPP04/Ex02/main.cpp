@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:50:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 13:56:48 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/17 16:08:03 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,25 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "Brain.hpp"
 
 int	main(void)
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	// const Animal* meta = new Animal();
+	Animal* dog = new Dog();
+	Animal* cat = new Cat();
 
-	std::cout << j->getType() << std::endl;
-	j->makeSound();
-	std::cout << i->getType() << std::endl;
-	i->makeSound();
+	std::cout << cat->getType() << std::endl;
+	cat->makeSound();
+	std::cout << dog->getType() << std::endl;
+	dog->makeSound();
+	// meta->makeSound();
 
-	meta->makeSound();
+	cat->setIdeaAnimal(0, "I am a cat");
+	std::cout << cat->getIdeaAnimal(0) << std::endl;
 
-	delete meta;
-	delete j;
-	delete i;
+	// delete meta;
+	delete dog;
+	delete cat;
 	return (0);
 }

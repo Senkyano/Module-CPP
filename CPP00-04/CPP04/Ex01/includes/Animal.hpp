@@ -6,14 +6,15 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:54:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 13:55:09 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/17 14:53:34 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include <iostream>
+# include <iostream>
+# include "Brain.hpp"
 
 class	Animal
 {
@@ -21,6 +22,7 @@ class	Animal
 		std::string type;
 
 	private :
+		Brain	*brain;
 
 	public :
 		Animal();
@@ -29,6 +31,8 @@ class	Animal
 
 		virtual void	makeSound() const;
 		std::string		getType() const;
+		void			setIdeaAnimal(int i, std::string idea);
+		std::string		getIdeaAnimal(int i);
 };
 
 #endif

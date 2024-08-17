@@ -6,8 +6,21 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/15 16:53:38 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/17 13:57:31 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
+
+Dog::Dog() : Animal("Dog")
+{
+}
+
+Dog::~Dog()
+{
+}
+
+void	Dog::makeSound() const
+{
+	std::cout << type << " : woof woof" << std::endl;
+}

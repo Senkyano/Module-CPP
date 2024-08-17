@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/15 16:54:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 13:55:09 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/17 14:07:58 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/17 14:08:59 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#include "Brain.hpp"
 
-#include <iostream>
-
-class	Animal
+Brain::Brain()
 {
-	protected :
-		std::string type;
+	std::cout << "Brain default constructor called" << std::endl;
+}
 
-	private :
+Brain::~Brain()
+{
+	std::cout << "Brain destructor called" << std::endl;
+}
 
-	public :
-		Animal();
-		Animal(std::string type);
-		virtual ~Animal();
+std::string	Brain::getIdea(int i) const
+{
+	if (i < 0 || i >= 100)
+		return ("No Idea");
+	return (ideas[i]);
+}
 
-		virtual void	makeSound() const;
-		std::string		getType() const;
-};
-
-#endif
+void	Brain::setIdea(int i, std::string idea)
+{
+	if (i < 0 || i >= 100)
+		return ;
+	ideas[i] = idea;
+}
