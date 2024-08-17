@@ -5,31 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/17 16:54:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 17:16:00 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/17 20:49:13 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/17 20:53:19 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
 
-# include <iostream>
-# include "ICharacter.hpp"
+#include <iostream>
+#include "ICharacter.hpp"
 
-class ICharacter;
-
-class	AMateria
+class AMateria
 {
-	protected :
-		std::string type;
+	protected:
+		std::string	type;
 
-	public :
+	public:
 		AMateria(std::string const & type);
-		~AMateria();
-		
-		std::string const & getType() const;
+		std::string const & getType() const; //Returns the materia type
 		virtual AMateria* clone() const = 0;
-		virtual	void use(ICharacter &target);
+		virtual void use(ICharacter& target);
 };
+
 
 #endif
