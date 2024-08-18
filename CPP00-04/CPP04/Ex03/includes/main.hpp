@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/17 20:49:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 01:43:10 by rihoy            ###   ########.fr       */
+/*   Created: 2024/05/21 22:16:02 by rihoy             #+#    #+#             */
+/*   Updated: 2024/05/21 22:16:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MATERIASOURCE_HPP
-# define MATERIASOURCE_HPP
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-#include <iostream>
-#include "IMateriaSource.hpp"
+# include <iostream>
+# include <string>
+# include <cstring>
 
-class	MateriaSource : public IMateriaSource
-{
-	private :
-		AMateria*	inventory[4];
-	
-	public :
-		MateriaSource();
-		~MateriaSource();
-
-		void		learnMateria(AMateria* materia);
-		AMateria*	createMateria(std::string const & type);
-};
+# define BLK "\e[0;90m"
+# define RED "\e[1;31m"
+# define GR "\e[1;92m"
+# define Y "\e[1;93m"
+# define BLU "\e[1;94m"
+# define PUR "\e[1;95m"
+# define CY "\e[1;96m"
+# define WH "\e[0;97m"
+# define RST "\e[0m"
 
 #endif

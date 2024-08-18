@@ -6,7 +6,32 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:15 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 20:49:16 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/18 12:59:49 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CHARACTER_HPP
+# define CHARACTER_HPP
+
+#include <iostream>
+#include "ICharacter.hpp"
+
+class	Character : public ICharacter
+{
+	private :
+		std::string	name;
+		AMateria*	inventory[4];
+		AMateria*	ownWorld[20];
+
+	public :
+		Character(std::string const &name);
+		~Character();
+
+		std::string const	&getName() const;
+		void				equip(AMateria* m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter& target);
+		void				transfertMateria(AMateria* m);
+};
+
+#endif
