@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:05:03 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/26 23:09:00 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/19 14:19:22 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,16 @@ int	analyse(std::fstream &in_file, std::fstream &out_file, std::string s1, std::
 {
 	std::string		line;
 	size_t			pos;
+	size_t			ant_pos;
 
-	pos = 0;
 	while (std::getline(in_file, line))
 	{
+		pos = 0;
+		ant_pos = 0;
 		while (pos != std::string::npos)
 		{
-			pos = (line).find(s1);
+			pos = (line).find(s1,ant_pos);
+			ant_pos = pos + s2.length();
 			if (pos == std::string::npos)
 				break;
 			line.erase(pos, s1.length());
