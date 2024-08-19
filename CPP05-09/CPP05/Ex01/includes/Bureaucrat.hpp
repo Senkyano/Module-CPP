@@ -6,15 +6,15 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:39 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/19 18:10:18 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/19 18:58:41 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <iostream>
-#include "main.hpp"
+# include <iostream>
+# include "main.hpp"
 
 class	Bureaucrat
 {

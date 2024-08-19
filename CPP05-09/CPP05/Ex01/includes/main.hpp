@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/27 14:13:11 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/27 21:53:01 by rihoy            ###   ########.fr       */
+/*   Created: 2024/05/21 22:16:02 by rihoy             #+#    #+#             */
+/*   Updated: 2024/05/21 22:16:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "canonique.hpp"
-#include <iostream>
-#include <iomanip>
-#include <string>
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-int main( void )
-{
-	Canonique	a;
-	Canonique	b( a );
-	Canonique	c;
+# include <iostream>
+# include <string>
+# include <cstring>
 
-	c = b;
+# define BLK "\e[0;90m"
+# define RED "\e[1;31m"
+# define GR "\e[1;92m"
+# define Y "\e[1;93m"
+# define BLU "\e[1;94m"
+# define PUR "\e[1;95m"
+# define CY "\e[1;96m"
+# define WH "\e[0;97m"
+# define RST "\e[0m"
 
-	std::cout << a.getRawBits() << std::endl;
-	std::cout << b.getRawBits() << std::endl;
-	std::cout << c.getRawBits() << std::endl;
-
-	return (0);
-}
+#endif

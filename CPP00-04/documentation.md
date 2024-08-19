@@ -71,7 +71,9 @@ convertion de std::string en char* = "_Nom_De_La_Variable.c_str()"
 					Nom_du_constructeur_deplacement(Nom_de_la_class&& ..);
 					~Nom_du_destructeur();
 			private:
+					Permet que les variables ne soit pas acces en "libre service".
 			protected:
+					Le niveau d'acces proteger permet aux class qui herite d'une class mere d'avoir quand meme acces a des variables.
 		}
 
 ### Constructeur
@@ -192,3 +194,11 @@ REFERENCE / POINTEUR :
 	Il y a 2 type de reference les lvalue = & et les rvalue = &&
 		lvalue font reference a une variable deja nommer
 		rvalue correspond a une reference universel qui peut un lvalue ou a une variable temporaire.
+
+## Polymorph
+
+	virtual = redefinission plus tard
+	override = permet de reecrire par dessus une fonction deja existante quand on as fait un heritage.l
+	class abstraire il faut que une des fonctions soit en = 0;
+
+	Une classe qui devient une interface on que l'on peut considerer comme une interface c'est quand toute ces methodes sont en virtual pur.

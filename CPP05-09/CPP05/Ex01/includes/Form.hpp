@@ -1,46 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 13:17:39 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/19 18:10:18 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/19 18:54:20 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/19 19:59:45 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_CPP
+# define FORM_CPP
 
-#include <iostream>
-#include "main.hpp"
+# include <iostream>
+# include "Bureaucrat.hpp"
 
-class	Bureaucrat
+class	Form
 {
 	private :
 		std::string const	name;
-		int				grade;
+		std::string const	signBy;
+		bool				sign;
+		int const			gradeSign;
+		int const			gradeExec;
 
 	public :
-		Bureaucrat(std::string const name, int grade);
-		~Bureaucrat();
+		Form(std::string const name, int gradeSign, int gradeExec);
+		~Form();
 
 		std::string const	getName() const;
-		int					getGrade() const;
-		void				setGrade(int grade);
-		void				incrementGrade();
-		void				decrementGrade();
-	
-	class GradeTooHighException : public std::exception
+		std::string const	getSignBy() const;
+		void				signFrom(Bureaucrat &bureaucrat);
+		bool				getSignState() const;
+		int					getGradeSign() const;
+		int					getGradeExec() const;
+
+	class	GradeTooHighException : public std::exception
 	{
 		public :
 			virtual const char* what() const throw() {
 				return (RED "Grade is too high" RST);
 			}
 	};
-	
-	class GradeTooLowException : public std::exception
+
+	class	GradeTooLowException : public std::exception
 	{
 		public :
 			virtual const char* what() const throw() {
