@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 22:49:24 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/19 14:39:41 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name), grade(grade)
 {
+	if (grade < 1)
 	
 }

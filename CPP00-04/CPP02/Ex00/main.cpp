@@ -6,11 +6,11 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:13:11 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/27 21:53:01 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/19 16:46:37 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "canonique.hpp"
+#include "Fixed.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
