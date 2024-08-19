@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:53:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/19 20:16:57 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/20 00:42:56 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,48 @@ Form::~Form()
 {
 }
 
+std::string const	Form::getName() const
+{
+	return (this->name);
+}
 
+std::string const	&Form::getSignBy() const
+{
+	return (this->signBy);
+}
+
+bool	Form::getSignState() const
+{
+	return (this->sign);
+}
+
+void	Form::signForm(Bureaucrat &bureaucrat)
+{
+	try
+	{
+		if (bureaucrat.getGrade() <= this->gradeSign)
+		{
+			if (this->getSignState())
+				throw Form::FormAlreadySignedException();
+			this->sign = true;
+			this->signBy = bureaucrat.getName();
+			std::cout << bureaucrat.getName() << " signs " << this->name << std::endl;
+		}
+		else
+			throw Form::GradeTooLowException();
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << this->name << " : " << e.what() << " for " << bureaucrat.getName() << std::endl;
+	}
+}
+
+int	Form::getGradeSign() const
+{
+	return (this->gradeSign);
+}
+
+int	Form::getGradeExec() const
+{
+	return (this->gradeExec);
+}

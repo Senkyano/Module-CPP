@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:54:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/19 19:59:45 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/20 00:23:58 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	Form
 {
 	private :
 		std::string const	name;
-		std::string const	signBy;
+		std::string			signBy;
 		bool				sign;
 		int const			gradeSign;
 		int const			gradeExec;
@@ -30,8 +30,8 @@ class	Form
 		~Form();
 
 		std::string const	getName() const;
-		std::string const	getSignBy() const;
-		void				signFrom(Bureaucrat &bureaucrat);
+		std::string const	&getSignBy() const;
+		void				signForm(Bureaucrat &bureaucrat);
 		bool				getSignState() const;
 		int					getGradeSign() const;
 		int					getGradeExec() const;
@@ -49,6 +49,14 @@ class	Form
 		public :
 			virtual const char* what() const throw() {
 				return (RED "Grade is too low" RST);
+			}
+	};
+
+	class	FormAlreadySignedException : public std::exception
+	{
+		public :
+			virtual const char* what() const throw() {
+				return (RED "Form is already signed" RST);
 			}
 	};
 };
