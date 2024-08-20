@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:06:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 19:36:50 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/20 20:32:34 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "AForm.hpp"
 # include <cstdlib>
+# include <ctime>
 
 class	RobotmyRequestForm : public AForm
 {
