@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:35:45 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 13:41:50 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/20 19:06:34 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,12 @@ void	PresidentialPardonForm::execute(Bureaucrat const &executor) const
 			throw AForm::GradeTooLowException();
 		else if (executor.getGrade() < 1)
 			throw AForm::GradeTooHighException();
-		
+		if (!this->getSignState())
+			throw AForm::FormNotSignedException();
+		std::cout << this->target << " has been pardoned by Founder" << std::endl;
 	}
 	catch (std::exception &e)
 	{
-		
+		std::cerr << this->getName() << " : " << e.what() << std::endl;
 	}
 }

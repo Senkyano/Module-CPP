@@ -40,7 +40,10 @@ RESET = \033[0m
 #		File
 #-----------------------#
 FILE_CPP =	Bureaucrat.cpp \
-			Form.cpp
+			AForm.cpp \
+			ShrubberyCreationForm.cpp \
+			RobotmyRequestForm.cpp \
+			PresidentialPardonForm.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))

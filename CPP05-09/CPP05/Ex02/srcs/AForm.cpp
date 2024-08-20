@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:53:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 13:17:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/20 18:53:47 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,14 @@ int	AForm::getGradeSign() const
 int	AForm::getGradeExec() const
 {
 	return (this->gradeExec);
+}
+
+void	AForm::setSignState(bool state)
+{
+	this->sign = state;
+}
+
+void	AForm::setSignBy(std::string const &name)
+{
+	this->signBy = name;
 }

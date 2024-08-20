@@ -6,26 +6,36 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:27:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 13:29:49 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/20 19:41:55 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTMYREQUESTFORM_HPP
-# define ROBOTMYREQUESTFORM_HPP
+#include "RobotmyRequestForm.hpp"
 
-# include "AForm.hpp"
-# include <iostream>
-
-class	RobotMyRequestForm : public AForm
+RobotmyRequestForm::RobotmyRequestForm(std::string const target) : AForm("RobotmyRequestForm", 72, 45), target(target)
 {
-	private :
-		std::string const	target;
+}
 
-	public :
-		RobotMyRequestForm(std::string const target);
-		~RobotMyRequestForm();
+RobotmyRequestForm::~RobotmyRequestForm()
+{
+}
 
-		void	execute(Bureaucrat const &executor) const;
-};
-
-#endif
+void	RobotmyRequestForm::execute(Bureaucrat const &executor) const
+{
+	try
+	{
+		if (executor.getGrade() > this->getGradeExec())
+			throw AForm::GradeTooLowException();
+		else if (executor.getGrade() < 1)
+			throw AForm::GradeTooHighException();
+		if (!this->getSignState())
+			throw AForm::FormNotSignedException();
+		if (rand() % 2)
+			throw RobotmyRequestForm::RobotmyRequestFormException();
+		std::cout << "RobotmyRequestForm has been executed " << GR << "SUCCESFULLY" << RST << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << this->getName() << " : " << e.what() << std::endl;
+	}
+}
