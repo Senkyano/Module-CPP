@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 22:16:02 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/21 22:16:51 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/21 13:45:42 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <cstring>
+# include <cmath>
+# include <limits>
 
 # define BLK "\e[0;90m"
 # define RED "\e[1;31m"

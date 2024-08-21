@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   canonique.hpp                                      :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 21:39:25 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/27 22:19:43 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/21 14:57:59 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __CANONIQUE_HPP__
-# define __CANONIQUE_HPP__
+#ifndef __FIXED_HPP__
+# define __FIXED_HPP__
 
-class Canonique
+class Fixed
 {
 	private:
 		int					value;
@@ -21,12 +21,12 @@ class Canonique
 
 	public:
 	// constructor
-		Canonique();
-		Canonique(const Canonique &value);
+		Fixed();
+		Fixed(const Fixed &value);
 	// destructeur
-		~Canonique();
+		~Fixed();
 	//surcharge operator
-		Canonique &operator=(const Canonique &value);
+		Fixed &operator=(const Fixed &value);
 	//getter
 		int getRawBits(void) const;
 	//setter

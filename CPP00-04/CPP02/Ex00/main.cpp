@@ -6,20 +6,20 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 14:13:11 by rihoy             #+#    #+#             */
-/*   Updated: 2024/05/27 21:53:01 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/21 14:57:14 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "canonique.hpp"
+#include "Fixed.hpp"
 #include <iostream>
 #include <iomanip>
 #include <string>
 
 int main( void )
 {
-	Canonique	a;
-	Canonique	b( a );
-	Canonique	c;
+	Fixed	a;
+	Fixed	b( a );
+	Fixed	c;
 
 	c = b;
 
