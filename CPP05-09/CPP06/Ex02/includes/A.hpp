@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 22:29:31 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 15:01:22 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/21 21:27:51 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/21 21:56:27 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include "main.hpp"
+#ifndef A_HPP
+# define A_HPP
 
-int	main(int argc, char **argv)
+# include "Base.hpp"
+
+class	A : public Base
 {
-	ScalarConverter	scalarConverter;
+};
 
-	if (argc != 2)
-	{
-		std::cout << RED << "Error Usage : " << RST;
-		std::cout << "./convert [value]" << std::endl;
-		return (1);
-	}
-	scalarConverter.convert(argv[1]);
-}
+#endif

@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 22:29:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 19:34:23 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/21 19:42:46 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/21 22:04:02 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef BASE_HPP
+# define BASE_HPP
 
-# include <iostream>
 # include "main.hpp"
 
-bool	onlyDigits(std::string const str);
-
-class ScalarConverter
+class	Base
 {
-	public:
-		ScalarConverter();
-		~ScalarConverter();
-
-		static void	convert(std::string const str);
-
-	class	ScalarConversionException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw() {
-				return ("impossible");
-			}
-	};
+	public :
+		Base();
+		virtual	~Base();
 };
-
-
 
 #endif

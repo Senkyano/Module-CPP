@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serialization.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 22:29:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 19:34:23 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/21 19:14:23 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/21 19:29:32 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER_HPP
-# define SCALARCONVERTER_HPP
+#ifndef SERIALIZATION_HPP
+# define SERIALIZATION_HPP
 
-# include <iostream>
 # include "main.hpp"
+# include <stdint.h>
 
-bool	onlyDigits(std::string const str);
+typedef struct	Data
+{
+	std::string		s1;
+	int				n;
+	std::string		s2;
+}	Data;
 
-class ScalarConverter
+class	Serialization
 {
 	public:
-		ScalarConverter();
-		~ScalarConverter();
+		Serialization();
+		~Serialization();
 
-		static void	convert(std::string const str);
-
-	class	ScalarConversionException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw() {
-				return ("impossible");
-			}
-	};
+		static uintptr_t	serialize(Data *ptr);
+		static Data*		deserialize(uintptr_t raw);
 };
-
-
 
 #endif

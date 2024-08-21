@@ -202,3 +202,18 @@ REFERENCE / POINTEUR :
 	class abstraire il faut que une des fonctions soit en = 0;
 
 	Une classe qui devient une interface on que l'on peut considerer comme une interface c'est quand toute ces methodes sont en virtual pur.
+
+### Gestion Error
+
+	on as comme un if else mais avec try catch ca permet de tester une valeur ou une initialisation et de nous envoyer une error
+	avec throw
+
+### Transformation "structure en pointeur universel"
+
+	On transforme le pointeur qui est une structure en un uintptr
+	puis on le retransforme mais il peut y avoir des consequence mais dans notre aucun.
+
+### Generation de nombre "Aleatoire"
+
+	srand(time(NULL))
+	rd = rand();

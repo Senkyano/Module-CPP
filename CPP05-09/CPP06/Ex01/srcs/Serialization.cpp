@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serialization.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 22:29:31 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 15:01:22 by rihoy            ###   ########.fr       */
+/*   Created: 2024/08/21 19:24:27 by rihoy             #+#    #+#             */
+/*   Updated: 2024/08/21 19:25:33 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
-#include "main.hpp"
+#include "Serialization.hpp"
 
-int	main(int argc, char **argv)
+Serialization::Serialization()
 {
-	ScalarConverter	scalarConverter;
+}
 
-	if (argc != 2)
-	{
-		std::cout << RED << "Error Usage : " << RST;
-		std::cout << "./convert [value]" << std::endl;
-		return (1);
-	}
-	scalarConverter.convert(argv[1]);
+Serialization::~Serialization()
+{
+}
+
+uintptr_t	Serialization::serialize(Data *ptr)
+{
+	return (reinterpret_cast<uintptr_t>(ptr));
+}
+
+Data*	Serialization::deserialize(uintptr_t raw)
+{
+	return (reinterpret_cast<Data *>(raw));
 }
