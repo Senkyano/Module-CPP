@@ -39,7 +39,7 @@ RESET = \033[0m
 #--------------------------------------#
 #		File
 #-----------------------#
-FILE_CPP =	canonique.cpp
+FILE_CPP =	Fixed.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))
