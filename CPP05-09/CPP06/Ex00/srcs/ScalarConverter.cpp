@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 13:23:57 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 15:12:17 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ScalarConverter::convert(std::string const str)
 	else if (str.length() != 1 && !onlyDigits(str)
 		&& strcmp(str.c_str(), "-inff") && strcmp(str.c_str(), "inff")
 			&& strcmp(str.c_str(), "nan") && strcmp(str.c_str(), "nanf") 
-				&& strcmp(str.c_str(), "-inf") && strcmp(str.c_str(), "inf"))
+				&& strcmp(str.c_str(), "-inf") && strcmp(str.c_str(), "inf") && !isFloat(str))
 		errorHandling = true;
 	else
 		f = strtod(str.c_str(), NULL);
@@ -69,7 +69,7 @@ void	ScalarConverter::convert(std::string const str)
 		else if (f == -std::numeric_limits<float>::infinity())
 			std::cout << "float: " << "-inff" << std::endl;
 		else
-			std::cout << "float: " << f << "f" << std::endl;
+			std::cout << "float: " << static_cast<float>(f) << "f" << std::endl;
 	}
 	catch (ScalarConversionException &e)
 	{
@@ -99,5 +99,22 @@ bool	onlyDigits(std::string const str)
 		if (!isdigit(str[i]) && str[i] != '.' && str[i] != '+' && str[i] != '-')
 			return (false);
 	}
+	return (true);
+}
+
+bool	isFloat(std::string const str)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < str.length() - 1)
+	{
+		if (str[i] != '.' && !isdigit(str[i]))
+			return (false);
+		i++;
+	}
+	std::cout << str[i] << std::endl;
+	if (str[i] != 'f')
+		return (false);
 	return (true);
 }

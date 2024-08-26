@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 19:34:23 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 15:11:29 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "main.hpp"
 
 bool	onlyDigits(std::string const str);
+bool	isFloat(std::string const str);
 
 class ScalarConverter
 {
