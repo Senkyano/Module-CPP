@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:54:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 00:23:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:23:24 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class	Form
 
 	public :
 		Form(std::string const name, int gradeSign, int gradeExec);
+		Form(const Form &value);
+		Form &operator=(const Form &value);
 		~Form();
 
 		std::string const	getName() const;

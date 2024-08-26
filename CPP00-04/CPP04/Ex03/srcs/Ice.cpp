@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:36 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:38:46 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:07:28 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 Ice::Ice() : AMateria("ice")
 {
 	std::cout << GR<< "Ice constructor called" << RST << std::endl;
+}
+
+Ice::Ice(const Ice &value) : AMateria(value)
+{
+	*this = value;
+}
+
+Ice	&Ice::operator=(const Ice &value)
+{
+	if (this == &value)
+		return (*this);
+	type = value.type;
+	return (*this);
 }
 
 Ice::~Ice()

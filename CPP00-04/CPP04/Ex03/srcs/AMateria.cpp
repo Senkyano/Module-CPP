@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:28:57 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:04:20 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,19 @@
 
 AMateria::AMateria(std::string const &type) : type(type)
 {
+}
+
+AMateria::AMateria(const AMateria &value)
+{
+	*this = value;
+}
+
+AMateria &AMateria::operator=(const AMateria &value)
+{
+	if (this == &value)
+		return (*this);
+	type = value.type;
+	return (*this);
 }
 
 AMateria::~AMateria()

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 23:43:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/23 01:19:19 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:28:52 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ class	Array
 		};
 		Array(Array const &other) {
 			this = other;
+		};
+		Array	&operator=(Array const &other)
+		{
+			this->sizeArray = other.sizeArray;
+			this->array = new T[other.sizeArray];
+			for (unsigned int i = 0; i < other.sizeArray; i++)
+				this->array[i] = other.array[i];
+			return (*this);
 		};
 		~Array() {};
 		

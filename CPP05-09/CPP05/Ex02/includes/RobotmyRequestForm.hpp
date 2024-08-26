@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:06:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 20:32:34 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:24:04 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ class	RobotmyRequestForm : public AForm
 
 	public :
 		RobotmyRequestForm(std::string const target);
+		RobotmyRequestForm(const RobotmyRequestForm &value);
+		RobotmyRequestForm &operator=(const RobotmyRequestForm &value);
 		~RobotmyRequestForm();
 
 		void	execute(Bureaucrat const &executor) const;

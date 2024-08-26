@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 13:57:31 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:01:55 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 Dog::Dog() : Animal("Dog")
 {
+}
+
+Dog::Dog(const Dog &value)
+{
+	*this = value;
+}
+
+Dog	&Dog::operator=(const Dog &value)
+{
+	type = value.type;
+	return (*this);
 }
 
 Dog::~Dog()

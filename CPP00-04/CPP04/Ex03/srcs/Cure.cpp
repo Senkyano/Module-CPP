@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:32 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:39:08 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:07:38 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,19 @@
 Cure::Cure() : AMateria("cure")
 {
 	std::cout << GR <<"Cure constructor called" << RST << std::endl;
+}
+
+Cure::Cure(const Cure &value) : AMateria(value)
+{
+	*this = value;
+}
+
+Cure	&Cure::operator=(const Cure &value)
+{
+	if (this == &value)
+		return (*this);
+	type = value.type;
+	return (*this);
 }
 
 Cure::~Cure()

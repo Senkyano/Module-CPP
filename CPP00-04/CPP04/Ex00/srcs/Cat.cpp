@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 16:57:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:01:49 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@ Cat::Cat() : Animal("Cat")
 {
 }
 
-Cat::Cat(Cat &value)
+Cat::Cat(const Cat &value)
 {
 	*this = value;
+}
+
+Cat	&Cat::operator=(const Cat &value)
+{
+	type = value.type;
+	return (*this);
 }
 
 Cat::~Cat()

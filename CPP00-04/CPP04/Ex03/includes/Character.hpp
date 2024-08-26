@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:15 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:59:49 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:04:01 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class	Character : public ICharacter
 
 	public :
 		Character(std::string const &name);
+		Character(const Character &value);
+		Character &operator=(const Character &value);
 		~Character();
 
 		std::string const	&getName() const;

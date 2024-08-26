@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 14:20:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:02:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 Cat::Cat() : Animal("Cat")
 {
 	std::cout << "Cat default constructor called" << std::endl;
+}
+
+Cat::Cat(const Cat &value)
+{
+	*this = value;
+}
+
+Cat	&Cat::operator=(const Cat &value)
+{
+	type = value.type;
+	return (*this);
 }
 
 Cat::~Cat()

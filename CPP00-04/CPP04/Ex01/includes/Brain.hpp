@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 14:03:19 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 14:53:30 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:02:07 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ class Brain
 
 	public:
 		Brain();
+		Brain(const Brain &value);
+		Brain &operator=(const Brain &value);
 		~Brain();
 
 		std::string	getIdea(int i) const;

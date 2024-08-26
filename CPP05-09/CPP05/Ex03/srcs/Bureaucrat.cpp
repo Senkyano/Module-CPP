@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 19:24:24 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:26:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name), grade(gr
 	{
 		std::cerr << this->name << " : " << e.what() << std::endl;
 	}
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &value) : name(value.name), grade(value.grade)
+{
+}
+
+Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &value)
+{
+	if (this == &value)
+		return (*this);
+	this->grade = value.grade;
+	return (*this);
 }
 
 Bureaucrat::~Bureaucrat()

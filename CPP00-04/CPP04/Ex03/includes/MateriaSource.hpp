@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 01:43:10 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:04:15 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class	MateriaSource : public IMateriaSource
 	
 	public :
 		MateriaSource();
+		MateriaSource(const MateriaSource &value);
+		MateriaSource &operator=(const MateriaSource &value);
 		~MateriaSource();
 
 		void		learnMateria(AMateria* materia);

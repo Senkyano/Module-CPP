@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:35:45 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 21:14:24 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:26:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 PresidentialPardonForm::PresidentialPardonForm(std::string const target) : AForm("PresidentialPardonForm", 25, 5), target(target)
 {
+}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &value) : AForm(value)
+{
+	*this = value;
+}
+
+PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &value)
+{
+	(void)value;
+	return (*this);
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()

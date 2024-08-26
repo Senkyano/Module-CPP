@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:54:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 16:52:14 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:00:42 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ class	Animal
 	public :
 		Animal();
 		Animal(std::string type);
-		Animal(Animal &value);
+		Animal(const Animal &value);
+		Animal &operator=(const Animal &value);
 		virtual ~Animal();
 
 		virtual void	makeSound() const;

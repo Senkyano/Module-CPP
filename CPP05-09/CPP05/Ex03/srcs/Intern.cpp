@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 20:56:58 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 21:15:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:26:25 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 Intern::Intern()
 {
+}
+
+Intern::Intern(const Intern &value)
+{
+	*this = value;
+}
+
+Intern	&Intern::operator=(const Intern &value)
+{
+	(void)value;
+	return (*this);
 }
 
 Intern::~Intern()

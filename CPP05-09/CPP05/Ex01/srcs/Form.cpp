@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:53:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 00:42:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:23:33 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ Form::Form(std::string const name, int gradeSign, int gradeExec) : name(name), g
 	{
 		std::cerr << this->name << " : " << e.what() << std::endl;
 	}
+}
+
+Form::Form(const Form &value) : name(value.name), gradeSign(value.gradeSign), gradeExec(value.gradeExec)
+{
+	this->sign = value.sign;
+	this->signBy = value.signBy;
+}
+
+Form	&Form::operator=(const Form &value)
+{
+	if (this == &value)
+		return (*this);
+	this->sign = value.sign;
+	this->signBy = value.signBy;
+	return (*this);
 }
 
 Form::~Form()

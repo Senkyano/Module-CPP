@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:13 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:24:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:03:55 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class AMateria
 
 	public:
 		AMateria(std::string const &type);
+		AMateria(const AMateria &value);
+		AMateria &operator=(const AMateria &value);
 		virtual ~AMateria();
 		std::string const	&getType() const;
 		virtual AMateria	*clone() const = 0;

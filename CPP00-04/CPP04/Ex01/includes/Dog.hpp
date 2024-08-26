@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:02 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 14:15:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:02:21 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Dog : public Animal
 
 	public :
 		Dog();
+		Dog(const Dog &value);
+		Dog &operator=(const Dog &value);
 		~Dog();
 		
 		void	makeSound() const;

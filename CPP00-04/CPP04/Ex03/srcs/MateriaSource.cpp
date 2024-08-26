@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:34 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:40:40 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:05:47 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@ MateriaSource::MateriaSource()
 	std::cout << GR << "Master : MateriaSource constructor called" << RST << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = NULL;
+}
+
+MateriaSource::MateriaSource(const MateriaSource &value)
+{
+	*this = value;
+}
+
+MateriaSource	&MateriaSource::operator=(const MateriaSource &value)
+{
+	if (this == &value)
+		return (*this);
+	for (int i = 0; i < 4; i++)
+	{
+		if (value.inventory[i])
+			this->inventory[i] = value.inventory[i]->clone();
+		else
+			this->inventory[i] = NULL;
+	}
+	return (*this);
 }
 
 MateriaSource::~MateriaSource()

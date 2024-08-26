@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:17 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 12:10:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:04:06 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class	Cure : public AMateria
 {
 	public :
 		Cure();
+		Cure(const Cure &value);
+		Cure &operator=(const Cure &value);
 		~Cure();
 
 		AMateria	*clone() const;

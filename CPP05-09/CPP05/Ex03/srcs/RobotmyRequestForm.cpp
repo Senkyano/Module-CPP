@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:27:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 20:35:29 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 23:26:45 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 RobotmyRequestForm::RobotmyRequestForm(std::string const target) : AForm("RobotmyRequestForm", 72, 45), target(target)
 {
 	srand(time(0));
+}
+
+RobotmyRequestForm::RobotmyRequestForm(const RobotmyRequestForm &value) : AForm(value)
+{
+	*this = value;
+}
+
+RobotmyRequestForm	&RobotmyRequestForm::operator=(const RobotmyRequestForm &value)
+{
+	(void)value;
+	return (*this);
 }
 
 RobotmyRequestForm::~RobotmyRequestForm()
