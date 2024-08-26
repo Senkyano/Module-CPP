@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:52:10 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 13:55:24 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:52:19 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Cat : public Animal
 
 	public :
 		Cat();
+		Cat(Cat &value);
 		~Cat();
 
 		void		makeSound() const;

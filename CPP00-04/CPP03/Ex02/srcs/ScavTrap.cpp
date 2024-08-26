@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 13:59:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/14 14:40:54 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:49:29 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@ ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 	setAttackDamage(20);
 	this->guard = false;
 	std::cout << "ScavTrap " << name << " is born!" << std::endl;
+}
+
+ScavTrap::ScavTrap(ScavTrap &value) : ClapTrap(value)
+{
+	setHealth(value.getHealth());
+	setEnergy(value.getEnergy());
+	setAttackDamage(value.getAttackDamage());
+	this->guard = value.guard;
+	std::cout << "ScavTrap " << getName() << " is born!" << std::endl;
 }
 
 ScavTrap::~ScavTrap()

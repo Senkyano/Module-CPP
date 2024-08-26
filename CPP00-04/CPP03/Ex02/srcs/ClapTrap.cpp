@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 10:11:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/15 14:47:00 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:49:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,15 @@ ClapTrap::ClapTrap(const std::string name)
 	this->health = 10;
 	this->engergy = 10;
 	this->attack_damage = 0;
+	std::cout << "ClapTrap " << this->name << " appears !" << std::endl;
+}
+
+ClapTrap::ClapTrap(ClapTrap &value)
+{
+	this->name = value.name;
+	this->health = value.health;
+	this->engergy = value.engergy;
+	this->attack_damage = value.attack_damage;
 	std::cout << "ClapTrap " << this->name << " appears !" << std::endl;
 }
 

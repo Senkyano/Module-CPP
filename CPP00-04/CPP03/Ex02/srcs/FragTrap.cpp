@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:29:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/15 14:46:20 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:50:13 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
 	setEnergy(100);
 	setAttackDamage(30);
 	std::cout << "FragTrap " << name << " constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(FragTrap &value) : ClapTrap(value)
+{
+	setHealth(value.getHealth());
+	setEnergy(value.getEnergy());
+	setAttackDamage(value.getAttackDamage());
+	std::cout << "FragTrap " << getName() << " constructor called" << std::endl;
 }
 
 FragTrap::~FragTrap()

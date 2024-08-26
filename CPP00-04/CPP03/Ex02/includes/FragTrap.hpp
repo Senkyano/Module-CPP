@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 14:08:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/15 14:11:33 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 16:49:47 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class	FragTrap : public ClapTrap
 		
 	public :
 		FragTrap(std::string name);
+		FragTrap(FragTrap &value);
 		~FragTrap();
 
 		void	highFivesGuys(void);
