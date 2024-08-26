@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 19:35:58 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/26 13:23:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ ScalarConverter::~ScalarConverter()
 
 void	ScalarConverter::convert(std::string const str)
 {
-	float	f;
+	double	f;
 	bool	errorHandling;
 
+	f = 0;
 	errorHandling = false;
 	if (str.length() == 1 && !isdigit(str[0]))
 		f = static_cast<float>(str[0]);
 	else if (str.length() != 1 && !onlyDigits(str)
 		&& strcmp(str.c_str(), "-inff") && strcmp(str.c_str(), "inff")
-			&& strcmp(str.c_str(), "nan"))
+			&& strcmp(str.c_str(), "nan") && strcmp(str.c_str(), "nanf") 
+				&& strcmp(str.c_str(), "-inf") && strcmp(str.c_str(), "inf"))
 		errorHandling = true;
 	else
-		f = strtof(str.c_str(), NULL);
+		f = strtod(str.c_str(), NULL);
 	try
 	{
 		if (f < 32 || f > 126 || std::isnan(f))
@@ -49,7 +51,8 @@ void	ScalarConverter::convert(std::string const str)
 		if (errorHandling)
 			throw ScalarConversionException();
 		if (f == std::numeric_limits<float>::infinity() 
-			|| f == -std::numeric_limits<float>::infinity() || std::isnan(f))
+			|| f == -std::numeric_limits<float>::infinity() || std::isnan(f)
+				|| f > 2147483647 || f < -2147483648)
 			throw ScalarConversionException();
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
 	}
@@ -59,7 +62,7 @@ void	ScalarConverter::convert(std::string const str)
 	}
 	try
 	{
-		if (errorHandling)
+		if (errorHandling || str.length() > 308)
 			throw ScalarConversionException();
 		if (f == std::numeric_limits<float>::infinity())
 			std::cout << "float: " << "inff" << std::endl;
@@ -74,7 +77,7 @@ void	ScalarConverter::convert(std::string const str)
 	}
 	try
 	{
-		if (errorHandling)
+		if (errorHandling || str.length() > 308)
 			throw ScalarConversionException();
 		if (f == std::numeric_limits<double>::infinity())
 			std::cout << "double: " << "inf" << std::endl;
