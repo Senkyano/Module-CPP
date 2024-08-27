@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 15:12:17 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/27 11:46:27 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ScalarConverter::convert(std::string const str)
 	}
 	try
 	{
-		if (errorHandling || str.length() > 308)
+		if (errorHandling || str.length() > 38)
 			throw ScalarConversionException();
 		if (f == std::numeric_limits<float>::infinity())
 			std::cout << "float: " << "inff" << std::endl;
@@ -94,10 +94,20 @@ void	ScalarConverter::convert(std::string const str)
 
 bool	onlyDigits(std::string const str)
 {
-	for (size_t i = 0; i < str.length(); i++)
+	int		error = 0;
+	size_t	i = 0;
+
+	if (str[0] == '+' || str[0] == '-')
+		i++;
+	while (i < str.length())
 	{
-		if (!isdigit(str[i]) && str[i] != '.' && str[i] != '+' && str[i] != '-')
+		if (!isdigit(str[i]) && str[i] != '.')
 			return (false);
+		if (str[i] == '.' && !error)
+			error = 1;
+		else if (str[i] == '.' && error)
+			return (false);
+		i++;
 	}
 	return (true);
 }
