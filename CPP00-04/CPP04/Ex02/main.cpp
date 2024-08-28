@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:50:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/27 18:09:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/28 12:43:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	main(void)
 {
-	const Animal* meta = new Animal();
+	// const Animal* meta = new Animal();
 	Animal* dog = new Dog();
 	Animal* cat = new Cat();
 
