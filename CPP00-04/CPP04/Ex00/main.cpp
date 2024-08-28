@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:50:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/17 13:56:48 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/28 12:34:05 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int	main(void)
 {
@@ -28,6 +30,12 @@ int	main(void)
 
 	meta->makeSound();
 
+	const	WrongAnimal* w = new WrongCat();
+
+	std::cout << w->getType() << std::endl;
+	w->makeSound();
+
+	delete w;
 	delete meta;
 	delete j;
 	delete i;
