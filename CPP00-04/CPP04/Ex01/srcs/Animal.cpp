@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:46:53 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:02:34 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 10:54:14 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 Animal::Animal()
 {
 	std::cout << "Animal default constructor called" << std::endl;
-	this->brain = new Brain();
 }
 
 Animal::Animal(std::string type) : type(type)
 {
-	this->brain = new Brain();
 	std::cout << "Animal type constructor called" << std::endl;
 }
 

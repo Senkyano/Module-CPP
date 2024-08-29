@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:54:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:02:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 10:53:02 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ class	Animal
 {
 	protected :
 		std::string type;
-
-	private :
-		Brain	*brain;
 
 	public :
 		Animal();

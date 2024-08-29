@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:03:01 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 10:55:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Dog::Dog() : Animal("Dog")
 {
 	std::cout << "Dog default constructor called" << std::endl;
+	new Brain();
 }
 
 Dog::Dog(const Dog &value)

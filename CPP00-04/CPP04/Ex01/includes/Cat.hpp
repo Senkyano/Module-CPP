@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:52:10 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:02:12 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 11:09:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Cat : public Animal
 	protected :
 
 	private :
+		Brain	*brain;
 
 	public :
 		Cat();
@@ -30,6 +31,7 @@ class Cat : public Animal
 		~Cat();
 
 		void		makeSound() const;
+		Brain 		*getBrain() const;
 };
 
 #endif
