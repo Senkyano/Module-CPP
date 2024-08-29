@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 14:07:58 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:03:39 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 11:38:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ Brain::Brain()
 
 Brain::Brain(const Brain &value)
 {
+	std::cout << "Brain copy constructor called" << std::endl;
 	*this = value;
 }
 

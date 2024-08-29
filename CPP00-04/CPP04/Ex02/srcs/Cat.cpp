@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:03:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 11:39:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,23 @@
 Cat::Cat() : Animal("Cat")
 {
 	std::cout << "Cat default constructor called" << std::endl;
+	new Brain();
 }
 
 Cat::Cat(const Cat &value)
 {
 	*this = value;
+	std::cout << "Cat copy constructor called" << std::endl;
+	if (value.getBrain())
+	{
+		this->brain = new Brain();
+		for (int i = 0; i < 100; i++)
+			this->brain->setIdea(i, value.brain->getIdea(i));
+	}
+	std::cout << "act cat : " << &value << std::endl;
+	std::cout << "new cat : " << this << std::endl;
+	std::cout << "act Brain : " << &value.brain << std::endl;
+	std::cout << "new Brain : " << &this->brain << std::endl;
 }
 
 Cat	&Cat::operator=(const Cat &value)
@@ -30,10 +42,16 @@ Cat	&Cat::operator=(const Cat &value)
 
 Cat::~Cat()
 {
+	delete brain;
 	std::cout << "Cat destructor called" << std::endl;
 }
 
 void	Cat::makeSound() const
 {
 	std::cout << type << " : meow meow" << std::endl;
+}
+
+Brain	*Cat::getBrain() const
+{
+	return (this->brain);
 }
