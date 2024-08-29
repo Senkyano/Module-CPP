@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:34 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:05:47 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 23:56:05 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &value)
 {
-	*this = value;
+	this->inventory[4] = {NULL};
+	for (int i = 0; i < 4; i++)
+	{
+		if (value.inventory[i])
+			this->inventory[i] = value.inventory[i]->clone();
+	}
 }
 
 MateriaSource	&MateriaSource::operator=(const MateriaSource &value)

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:04:42 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 23:51:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,19 @@ Character::Character(std::string const &name) : name(name)
 
 Character::Character(const Character &value)
 {
-	*this = value;
+	this->name = value.name;
+	this->inventory[4] = {NULL};
+	this->ownWorld[20] = {NULL};
+	for (int i = 0; i < 4; i++)
+	{
+		if (value.inventory[i])
+			this->inventory[i] = value.inventory[i]->clone();
+	}
+	for (int i = 0; i < 20; i++)
+	{
+		if (value.ownWorld[i])
+			this->ownWorld[i] = value.ownWorld[i]->clone();
+	}
 }
 
 Character	&Character::operator=(const Character &value)

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 15:28:07 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/29 23:47:31 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,20 @@ Cat::Cat(const Cat &value)
 
 Cat	&Cat::operator=(const Cat &value)
 {
-	type = value.type;
+	if (this != &value)
+	{
+		this->type = value.type;
+		if (this->brain)
+			delete this->brain;
+		if (value.getBrain())
+		{
+			this->brain = new Brain();
+			for (int i = 0; i < 100; i++)
+				this->brain->setIdea(i, value.brain->getIdea(i));
+		}
+		else
+			this->brain = NULL;
+	}
 	return (*this);
 }
 
