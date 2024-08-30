@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:38 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/18 13:03:55 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 11:45:53 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,15 @@ int main()
 	src->learnMateria(new Ice());
 	bob = new Character("bob");
 	me = new Character("me");
+	Character	*me1 = new Character("me");
+	me1->equip(new Ice());
+	Character	me2(*me1);
+	std::cout << "me1 :" << &me1 << std::endl;
+	std::cout << "inventory : " << std::endl;
+	std::cout << "1 :" << me1->getMateria(0) << std::endl;
+	std::cout << "me2 :" << &me2 << std::endl;
+	std::cout << "inventory : " << std::endl;
+	std::cout << "1 :" << me2.getMateria(0) << std::endl;
 	tmp = src->createMateria("ice");
 	me->equip(tmp);
 	tmp = src->createMateria("cure");

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:50:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 15:28:23 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 12:18:43 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ int	main(void)
 	std::cout << dog->getType() << std::endl;
 	dog->makeSound();
 
-	Cat *cat2 = new Cat(*static_cast<Cat*>(cat));
-	std::cout << cat2->getType() << std::endl;
-	cat2->addIdea(1, "new idea");
-	std::cout << "cat idea : "<< cat2->getIdea(1) << std::endl;
+	Cat *cat1 = new Cat();
+	Cat cat2(*cat1);
+	std::cout << cat2.getType() << std::endl;
+	cat2.addIdea(1, "new idea");
+	std::cout << "cat idea : "<< cat2.getIdea(1) << std::endl;
 
-	delete cat2;
+	delete cat1;
 	delete dog;
 	delete cat;
 	return (0);

@@ -6,16 +6,25 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 23:51:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 11:46:10 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 #include "main.hpp"
 
+Character::Character()
+{
+	std::cout << GR << "Character joined the game !" << RST << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->inventory[i] = NULL;
+	for	(int i = 0; i < 20; i++)
+		this->ownWorld[i] = NULL;
+}
+
 Character::Character(std::string const &name) : name(name)
 {
-	std::cout << GR << "Character " << name << " joined the game !" << RST << std::endl;
+	std::cout << GR << "Character Default " << name << " joined the game !" << RST << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->inventory[i] = NULL;
 	for	(int i = 0; i < 20; i++)
@@ -24,9 +33,12 @@ Character::Character(std::string const &name) : name(name)
 
 Character::Character(const Character &value)
 {
+	std::cout << GR << "Character Copy " << value.name << " joined the game !" << RST << std::endl;
 	this->name = value.name;
-	this->inventory[4] = {NULL};
-	this->ownWorld[20] = {NULL};
+	for (int i = 0; i < 4; i++)
+		this->inventory[i] = NULL;
+	for (int i = 0; i < 20; i++)
+		this->ownWorld[i] = NULL;
 	for (int i = 0; i < 4; i++)
 	{
 		if (value.inventory[i])
@@ -41,8 +53,6 @@ Character::Character(const Character &value)
 
 Character	&Character::operator=(const Character &value)
 {
-	if (this == &value)
-		return (*this);
 	name = value.name;
 	for (int i = 0; i < 4; i++)
 	{
@@ -138,4 +148,12 @@ void	Character::transfertMateria(AMateria* m)
 			delete m;
 		}
 	}
+}
+
+AMateria	*Character::getMateria(int idx) const
+{
+	if (idx >= 0 && idx < 4)
+		return (this->inventory[idx]);
+	else
+		return (NULL);
 }

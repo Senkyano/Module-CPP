@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 14:07:58 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 11:38:08 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 12:19:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ Brain::~Brain()
 std::string	Brain::getIdea(int i) const
 {
 	if (i < 0 || i >= 100)
+		return ("No Idea");
+	if (ideas[i].empty())
 		return ("No Idea");
 	return (ideas[i]);
 }

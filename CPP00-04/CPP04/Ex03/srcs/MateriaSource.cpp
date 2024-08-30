@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 20:49:34 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 23:56:05 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 11:11:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ MateriaSource::MateriaSource()
 
 MateriaSource::MateriaSource(const MateriaSource &value)
 {
-	this->inventory[4] = {NULL};
+	for (int i = 0; i < 4; i++)
+		this->inventory[i] = NULL;
 	for (int i = 0; i < 4; i++)
 	{
 		if (value.inventory[i])
