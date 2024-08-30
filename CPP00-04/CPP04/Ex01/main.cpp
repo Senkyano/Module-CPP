@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:50:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/28 12:44:05 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:48:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int	main(void)
 {
-	const Animal* meta = new Animal();
+	// const Animal* meta = new Animal();
 	Animal* dog = new Dog();
 	Animal* cat = new Cat();
 
@@ -26,12 +26,16 @@ int	main(void)
 	cat->makeSound();
 	std::cout << dog->getType() << std::endl;
 	dog->makeSound();
-	meta->makeSound();
+	// meta->makeSound();
 
-	cat->setIdeaAnimal(0, "I am a cat");
-	std::cout << cat->getIdeaAnimal(0) << std::endl;
-
-	delete meta;
+	Cat *cat1 = new Cat();
+	cat1->addIdea(1, "new idea");
+	Cat cat2(*cat1);
+	Cat cat3(cat2);
+	cat3 = cat2;
+	std::cout << "cat idea : " << cat2.getIdea(1) << std::endl;
+	// delete meta;
+	delete cat1;
 	delete dog;
 	delete cat;
 	return (0);

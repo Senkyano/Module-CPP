@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:52:10 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 11:09:57 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:19:45 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class Cat : public Animal
 
 		void		makeSound() const;
 		Brain 		*getBrain() const;
+		std::string	getIdea(int i);
+		void		addIdea(int i, std::string idea);
 };
 
 #endif

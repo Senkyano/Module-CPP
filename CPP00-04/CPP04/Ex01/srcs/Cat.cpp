@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:26 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 23:48:29 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:48:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 Cat::Cat() : Animal("Cat")
 {
 	std::cout << "Cat default constructor called" << std::endl;
-	new Brain();
+	this->brain = new Brain();
 }
 
 Cat::Cat(const Cat &value)
 {
-	*this = value;
+	this->type = value.type;
 	std::cout << "Cat copy constructor called" << std::endl;
 	if (value.getBrain())
 	{
@@ -36,25 +36,18 @@ Cat::Cat(const Cat &value)
 
 Cat	&Cat::operator=(const Cat &value)
 {
-	if (this != &value)
-	{
-		this->type = value.type;
-		if (this->brain)
-			delete this->brain;
-		if (value.getBrain())
-		{
-			this->brain = new Brain();
-			for (int i = 0; i < 100; i++)
-				this->brain->setIdea(i, value.brain->getIdea(i));
-		}
-		else
-			this->brain = NULL;
-	}
+	this->type = value.type;
+	if (this->brain)
+		delete this->brain;
+	this->brain = new Brain();
+	for (int i = 0; i < 100; i++)
+		this->brain->setIdea(i, value.brain->getIdea(i));
 	return (*this);
 }
 
 Cat::~Cat()
 {
+	delete brain;
 	std::cout << "Cat destructor called" << std::endl;
 }
 
@@ -67,3 +60,14 @@ Brain	*Cat::getBrain() const
 {
 	return (this->brain);
 }
+
+std::string	Cat::getIdea(int i)
+{
+	return (this->brain->getIdea(i));
+}
+
+void		Cat::addIdea(int i, std::string idea)
+{
+	this->brain->setIdea(i, idea);
+}
+

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:02 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/29 11:10:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/08/30 13:19:56 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ class Dog : public Animal
 		Dog &operator=(const Dog &value);
 		~Dog();
 		
-		void	makeSound() const;
-		Brain	*getBrain() const;
+		void		makeSound() const;
+		Brain		*getBrain() const;
+		std::string	getIdea(int i);
+		void		addIdea(int i, std::string idea);
 };
 
 #endif
