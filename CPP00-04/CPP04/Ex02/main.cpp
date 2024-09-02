@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/17 13:50:47 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/30 12:18:43 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/02 13:19:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	main(void)
 	dog->makeSound();
 
 	Cat *cat1 = new Cat();
+	cat1->addIdea(1, "cat cat12");
 	Cat cat2(*cat1);
 	std::cout << cat2.getType() << std::endl;
 	cat2.addIdea(1, "new idea");
