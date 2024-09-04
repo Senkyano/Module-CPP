@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/04 10:09:59 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/04 13:23:45 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,9 @@ Dog	&Dog::operator=(const Dog &value)
 	this->type = value.type;
 	if (this->brain)
 		delete this->brain;
-	if (value.brain)
-	{
-		this->brain = new Brain();
-		for (int i = 0; i < 100; i++)
-			this->brain->setIdea(i, value.brain->getIdea(i));
-	}
-	else
-		this->brain = NULL;
+	this->brain = new Brain();
+	for (int i = 0; i < 100; i++)
+		this->brain->setIdea(i, value.brain->getIdea(i));
 	return (*this);
 }
 
