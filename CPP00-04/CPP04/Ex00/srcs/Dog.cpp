@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 16:53:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/02 13:28:26 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/04 09:46:33 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ Dog::Dog() : Animal("Dog")
 {
 }
 
-Dog::Dog(const Dog &value)
+Dog::Dog(const Dog &value) : Animal(value.type)
 {
-	this->type = value.type;
 	std::cout << "Cat copy constructor called" << std::endl;
 }
 
