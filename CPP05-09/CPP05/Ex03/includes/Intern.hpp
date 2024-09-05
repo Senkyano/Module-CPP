@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 20:54:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:25:44 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 13:53:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,12 @@ class	Intern
 		Intern &operator=(const Intern &value);
 		~Intern();
 
-		AForm*	makeForm(std::string const& formName, std::string const& target);
+		AForm*	makeForm(std::string const& formName, std::string const &target);
 
 	class	FormNotFoundException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return ("Form not found");
-			}
+			virtual const char* what() const throw();
 	};
 };
 

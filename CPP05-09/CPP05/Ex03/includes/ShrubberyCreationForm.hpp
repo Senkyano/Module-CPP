@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:12:06 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:26:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 13:52:31 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ class	ShrubberyCreationForm : public AForm
 	class ShrubberyCreationFormException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "ShrubberyCreationForm has failed" RST);
-			}
+			virtual const char* what() const throw();
 	};
 };
 

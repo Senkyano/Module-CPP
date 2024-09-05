@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:54:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:23:47 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 11:56:43 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class	AForm
 		int const			gradeExec;
 
 	public :
+		AForm();
 		AForm(std::string const name, int gradeSign, int gradeExec);
 		AForm(const AForm &value);
 		AForm &operator=(const AForm &value);
@@ -46,33 +47,25 @@ class	AForm
 	class	GradeTooHighException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "Grade is too high" RST);
-			}
+			virtual const char* what() const throw();
 	};
 
 	class	GradeTooLowException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "Grade is too low" RST);
-			}
+			virtual const char* what() const throw();
 	};
 
 	class	FormAlreadySignedException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "Form is already signed" RST);
-			}
+			virtual const char* what() const throw();
 	};
 
 	class	FormNotSignedException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "Form is not signed" RST);
-			}
+			virtual const char* what() const throw();
 	};
 };
 

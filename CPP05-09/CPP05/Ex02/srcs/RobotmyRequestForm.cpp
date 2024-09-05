@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:27:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:25:11 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 14:03:53 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,17 @@ RobotmyRequestForm::~RobotmyRequestForm()
 
 void	RobotmyRequestForm::execute(Bureaucrat const &executor) const
 {
-	try
-	{
-		if (executor.getGrade() > this->getGradeExec())
-			throw AForm::GradeTooLowException();
-		else if (executor.getGrade() < 1)
-			throw AForm::GradeTooHighException();
-		if (!this->getSignState())
-			throw AForm::FormNotSignedException();
-		if (rand() % 2)
-			throw RobotmyRequestForm::RobotmyRequestFormException();
-		std::cout << "RobotmyRequestForm has been executed " << GR << "SUCCESFULLY" << RST << std::endl;
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << this->getName() << " : " << e.what() << std::endl;
-	}
+	if (executor.getGrade() > this->getGradeExec())
+		throw AForm::GradeTooLowException();
+	else if (executor.getGrade() < 1)
+		throw AForm::GradeTooHighException();
+	if (!this->getSignState())
+		throw AForm::FormNotSignedException();
+	if (rand() % 2)
+		throw RobotmyRequestForm::RobotmyRequestFormException();
+	std::cout << Y << this->target << " has been robotomized " << GR << "SUCCESFULLY" << RST << std::endl;
+}
+
+const char *RobotmyRequestForm::RobotmyRequestFormException::what() const throw() {
+	return (RED "RobotmyRequestForm has failed" RST);
 }

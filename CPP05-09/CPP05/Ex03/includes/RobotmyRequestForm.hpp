@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:06:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:25:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 13:52:03 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ class	RobotmyRequestForm : public AForm
 	class RobotmyRequestFormException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "RobotmyRequestForm has failed" RST);
-			}
+			virtual const char* what() const throw();
 	};
 	
 };

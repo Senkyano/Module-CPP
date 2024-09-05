@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:39 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 23:25:40 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 12:51:56 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "main.hpp"
 # include "AForm.hpp"
 
-class	AForm;
+class AForm;
 
 class	Bureaucrat
 {
@@ -26,9 +26,10 @@ class	Bureaucrat
 		int				grade;
 
 	public :
+		Bureaucrat();
 		Bureaucrat(std::string const name, int grade);
 		Bureaucrat(const Bureaucrat &value);
-		Bureaucrat &operator=(const Bureaucrat &value);
+		Bureaucrat	&operator=(const Bureaucrat &value);
 		~Bureaucrat();
 
 		std::string const	getName() const;
@@ -37,21 +38,17 @@ class	Bureaucrat
 		void				incrementGrade();
 		void				decrementGrade();
 		void				executeForm(AForm const &form) const;
-	
+
 	class GradeTooHighException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "Grade is too high" RST);
-			}
+			virtual const char* what() const throw();
 	};
 	
 	class GradeTooLowException : public std::exception
 	{
 		public :
-			virtual const char* what() const throw() {
-				return (RED "Grade is too low" RST);
-			}
+			virtual const char* what() const throw();
 	};
 };
 

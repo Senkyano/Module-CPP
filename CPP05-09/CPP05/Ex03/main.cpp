@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/20 21:26:42 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 14:40:34 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,72 +20,86 @@
 
 int	main(void)
 {
-	Bureaucrat	ceo("CEO", 1);
-	Bureaucrat	founder("Founder", 5);
-	Bureaucrat	co_founder("Co-Founder", 25);
-	Bureaucrat	direction("direction", 50);
-	Bureaucrat	manager("Manager", 100);
-	Bureaucrat	employee("Employee", 150);
+	try {
+		Bureaucrat	ceo("CEO", 1);
+		Bureaucrat	founder("Founder", 5);
+		Bureaucrat	co_founder("Co-Founder", 25);
+		Bureaucrat	direction("direction", 50);
+		Bureaucrat	manager("Manager", 100);
+		Bureaucrat	employee;
 
-	AForm	*tmp;
-	Intern	intern;
+		Intern	bringcof;
+		AForm	*form = bringcof.makeForm("president pardon", employee.getName());
+		try {
+			form->signForm(co_founder);
+			form->execute(founder);
+			form->execute(ceo);
+		} catch (std::exception &e) {
+			if (form)
+				delete form;
+			form = NULL;
+			std::cerr << e.what() << std::endl;
+		}
+		if (form)
+			delete form;
+
+		AForm	*form2 = bringcof.makeForm("robotomy request", "Blender");
+		try {
+			form2->signForm(direction);
+			form2->execute(co_founder);
+		}
+		catch (std::exception &e) {
+			if (form2)
+				delete form2;
+			form2 = NULL;
+			std::cerr << e.what() << std::endl;
+		}
+		if (form2)
+			delete form2;
+		AForm	*form3 = bringcof.makeForm("shrubbery request", "capital");
+		try {	
+			form3->signForm(manager);
+			form3->execute(manager);
+		} catch (std::exception &e) {
+			if (form3)
+				delete form3;
+			form3 = NULL;
+			std::cerr << e.what() << std::endl;
+		}
+		if (form3)
+			delete form3;
+	}
+	catch (std::exception &e)	{
+		std::cerr << e.what() << std::endl;
+	}
+
+
+
+
 	
-	tmp = NULL;
-	try
-	{
-		tmp = intern.makeForm("robotomy request", ceo.getName());
+	try {
+		Bureaucrat	ceo("CEO", 1);
+		Bureaucrat	founder("Founder", 5);
+		Bureaucrat	co_founder("Co-Founder", 25);
+		Bureaucrat	direction("direction", 50);
+		Bureaucrat	manager("Manager", 100);
+		Bureaucrat	employee;
+
+		Intern	bringcof;
+		AForm	*form1 = bringcof.makeForm("presidentpardon", employee.getName());
+		AForm	*form21 = bringcof.makeForm("robotomy request", "Blender");
+		AForm	*form31 = bringcof.makeForm("shrubbery request", "capital");
+
+		form1->signForm(co_founder);
+		form1->execute(founder);
+		form1->execute(ceo);
+		form21->signForm(direction);
+		form21->execute(co_founder);
+		form31->signForm(manager);
+		form31->execute(manager);
 	}
-	catch (std::exception &e)
-	{
+	catch (std::exception &e)	{
 		std::cerr << e.what() << std::endl;
 	}
-	if (tmp)
-	{
-		tmp->signForm(ceo);
-		tmp->execute(ceo);
-		delete tmp;
-		tmp = NULL;
-	}
-	try
-	{
-		tmp = intern.makeForm("presidential pardon", co_founder.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	if (tmp)
-	{
-		tmp->signForm(employee);
-		tmp->execute(employee);
-		tmp->execute(founder);
-		tmp->signForm(co_founder);
-		tmp->execute(founder);
-		delete tmp;
-		tmp = NULL;
-	}
-	try
-	{
-		tmp = intern.makeForm("presidential pardon", employee.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	if (tmp)
-	{
-		delete tmp;
-		tmp = NULL;
-	}
-	try
-	{
-		tmp = intern.makeForm("qsd ol creation", direction.getName());
-	}
-	catch (std::exception &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	if (tmp)
-		delete tmp;
 	return (0);
 }
