@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 11:47:08 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/05 16:43:22 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,18 @@ void		Bureaucrat::setGrade(int grade)
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void		Bureaucrat::incrementGrade()
-{
-	this->grade--;
-	if (this->grade < 1)
-		throw Bureaucrat::GradeTooHighException();
-}
-
 void		Bureaucrat::decrementGrade()
 {
 	this->grade++;
 	if (this->grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+}
+
+void		Bureaucrat::incrementGrade()
+{
+	this->grade--;
+	if (this->grade < 1)
+		throw Bureaucrat::GradeTooHighException();
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
