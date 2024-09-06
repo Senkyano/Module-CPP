@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:54:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 11:41:17 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/06 23:33:38 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include "Bureaucrat.hpp"
+
+class	Bureaucrat;
 
 class	Form
 {
@@ -26,37 +28,39 @@ class	Form
 		int const			gradeExec;
 
 	public :
+	// Constructeur
 		Form();
 		Form(std::string const name, int gradeSign, int gradeExec);
 		Form(const Form &value);
-		Form &operator=(const Form &value);
+	
+	// Descruteur
 		~Form();
 
+	// Operator
+		Form &operator=(const Form &value);
+
+	// Member functions
 		std::string const	getName() const;
 		std::string const	&getSignBy() const;
-		void				signForm(Bureaucrat &bureaucrat);
-		void				execForm(Bureaucrat &bureaucrat);
+		void				beSign(Bureaucrat &bureaucrat);
 		bool				getSignState() const;
 		int					getGradeSign() const;
 		int					getGradeExec() const;
 
-	class	GradeTooHighException : public std::exception
+	// Exception
+	class GradeTooHighException : public std::exception
 	{
 		public :
 			virtual const char* what() const throw();
 	};
 
-	class	GradeTooLowException : public std::exception
-	{
-		public :
-			virtual const char* what() const throw();
-	};
-
-	class	FormAlreadySignedException : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public :
 			virtual const char* what() const throw();
 	};
 };
+
+std::ostream	&operator<<(std::ostream &o, Form const &value);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 19:06:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 14:04:04 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 01:12:11 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class	RobotmyRequestForm : public AForm
 		std::string const	target;
 
 	public :
+		RobotmyRequestForm();
 		RobotmyRequestForm(std::string const target);
 		RobotmyRequestForm(const RobotmyRequestForm &value);
 		RobotmyRequestForm &operator=(const RobotmyRequestForm &value);

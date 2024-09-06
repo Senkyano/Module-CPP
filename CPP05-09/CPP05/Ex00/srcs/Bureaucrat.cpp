@@ -6,12 +6,13 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 16:41:55 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/06 21:53:52 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+// Constructeur
 Bureaucrat::Bureaucrat() : name("Employee"), grade(150)
 {
 }
@@ -28,6 +29,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat &value) : name(value.name), grade(value.
 {
 }
 
+// Destructeur
+Bureaucrat::~Bureaucrat()
+{
+}
+
+// Operator function
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &value)
 {
 	if (this == &value)
@@ -36,10 +43,9 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &value)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat()
-{
-}
+//	Member Function
 
+//		Getter
 std::string const	Bureaucrat::getName() const
 {
 	return (this->name);
@@ -50,6 +56,7 @@ int				Bureaucrat::getGrade() const
 	return (this->grade);
 }
 
+//		Setter
 void		Bureaucrat::setGrade(int grade)
 {
 	this->grade = grade;
@@ -61,18 +68,19 @@ void		Bureaucrat::setGrade(int grade)
 
 void		Bureaucrat::decrementGrade()
 {
-	this->grade++;
-	if (this->grade > 150)
+	if (this->grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
+	this->grade++;
 }
 
 void		Bureaucrat::incrementGrade()
 {
-	this->grade--;
-	if (this->grade < 1)
+	if (this->grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
+	this->grade--;
 }
 
+// Exception
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return (RED "Grade is too high" RST);
@@ -81,4 +89,11 @@ const char *Bureaucrat::GradeTooHighException::what() const throw()
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return (RED "Grade is too low" RST);
+}
+
+//		Operator <<
+std::ostream	&operator<<(std::ostream &o, Bureaucrat const &value)
+{
+	o << value.getName() << ", bureaucrat grade " << value.getGrade();
+	return (o);
 }

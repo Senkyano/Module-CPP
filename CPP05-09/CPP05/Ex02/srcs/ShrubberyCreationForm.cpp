@@ -6,11 +6,14 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:30:05 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 14:04:42 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 01:12:06 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
+
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("none")
+{}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
@@ -37,13 +40,7 @@ std::string	ShrubberyCreationForm::getTarget() const
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeExec())
-		throw AForm::GradeTooLowException();
-	else if (executor.getGrade() < 1)
-		throw AForm::GradeTooHighException();
-	if (!this->getSignState())
-		throw AForm::FormNotSignedException();
-	
+	std::cout << executor << " execute this Form " << this->getName() << std::endl;
 	std::string 	newFile = this->getTarget() + "_shrubbery";
 	std::ofstream 	file;
 

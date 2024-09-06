@@ -6,11 +6,16 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:27:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 14:03:53 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 01:12:03 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotmyRequestForm.hpp"
+
+RobotmyRequestForm::RobotmyRequestForm() : AForm("RobotmyRequestForm", 72, 45), target("none")
+{
+	srand(time(0));
+}
 
 RobotmyRequestForm::RobotmyRequestForm(std::string const target) : AForm("RobotmyRequestForm", 72, 45), target(target)
 {
@@ -33,17 +38,13 @@ RobotmyRequestForm::~RobotmyRequestForm()
 
 void	RobotmyRequestForm::execute(Bureaucrat const &executor) const
 {
-	if (executor.getGrade() > this->getGradeExec())
-		throw AForm::GradeTooLowException();
-	else if (executor.getGrade() < 1)
-		throw AForm::GradeTooHighException();
-	if (!this->getSignState())
-		throw AForm::FormNotSignedException();
+	std::cout << executor << " execute this Form " << this->getName() << std::endl;
+	std::cout << "Drilling ..." << std::endl;
 	if (rand() % 2)
-		throw RobotmyRequestForm::RobotmyRequestFormException();
-	std::cout << Y << this->target << " has been robotomized " << GR << "SUCCESFULLY" << RST << std::endl;
-}
-
-const char *RobotmyRequestForm::RobotmyRequestFormException::what() const throw() {
-	return (RED "RobotmyRequestForm has failed" RST);
+	{
+		std::cout << "Robotomized " << this->getName() << " has been failed\n";
+		std::cout << "Robots calling " << executor.getName() << std::endl;
+		return ;
+	}
+	std::cout << Y << this->getName() << " has been robotomized " << GR << "SUCCESFULLY" << RST << std::endl;
 }

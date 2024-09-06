@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:24:40 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 14:04:57 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 01:12:18 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class	PresidentialPardonForm : public AForm
 		std::string const	target;
 
 	public :
+		PresidentialPardonForm();
 		PresidentialPardonForm(std::string const target);
 		PresidentialPardonForm(const PresidentialPardonForm &value);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &value);
