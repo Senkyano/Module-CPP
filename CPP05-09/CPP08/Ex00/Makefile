@@ -1,5 +1,5 @@
 #   NAME
-NAME = Template
+NAME = EasyFind
 
 #---------------#
 #	includes
