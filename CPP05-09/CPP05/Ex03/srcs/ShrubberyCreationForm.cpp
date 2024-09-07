@@ -6,17 +6,17 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:30:05 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 13:52:42 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 12:02:05 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
-{
-}
+// Constructeur
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("none")
+{}
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
 }
 
@@ -24,12 +24,19 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &value)
 {
 }
 
+// Destructeur
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+}
+
+// Operateur assign
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &value)
 {
 	AForm::operator=(value);
 	return (*this);
 }
 
+// Member function
 std::string	ShrubberyCreationForm::getTarget() const
 {
 	return (this->target);
@@ -37,13 +44,10 @@ std::string	ShrubberyCreationForm::getTarget() const
 
 void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 {
+	std::cout << executor << " Try to executed shrubbery form\n";
 	if (executor.getGrade() > this->getGradeExec())
 		throw AForm::GradeTooLowException();
-	else if (executor.getGrade() < 1)
-		throw AForm::GradeTooHighException();
-	if (!this->getSignState())
-		throw AForm::FormNotSignedException();
-	
+	std::cout << executor << " executed " << this->getName() << std::endl;
 	std::string 	newFile = this->getTarget() + "_shrubbery";
 	std::ofstream 	file;
 
@@ -64,6 +68,7 @@ void	ShrubberyCreationForm::execute(Bureaucrat const &executor) const
 	file << std::endl;
 }
 
+// Exception
 const char *ShrubberyCreationForm::ShrubberyCreationFormException::what() const throw() {
 	return (RED "ShrubberyCreationForm has failed" RST);
 }

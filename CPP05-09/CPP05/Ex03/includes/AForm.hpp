@@ -6,12 +6,12 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:54:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 14:19:41 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 14:21:48 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_CPP
-# define FORM_CPP
+#ifndef AFORM_CPP
+# define AFORM_CPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
@@ -28,45 +28,40 @@ class	AForm
 		int const			gradeExec;
 
 	public :
+	// Constructeur
 		AForm();
 		AForm(std::string const name, int gradeSign, int gradeExec);
 		AForm(const AForm &value);
-		AForm &operator=(const AForm &value);
+	
+	// Descruteur
 		virtual ~AForm();
 
+	// Operator
+		AForm &operator=(const AForm &value);
+
+	// Member functions
 		std::string const	getName() const;
 		std::string const	&getSignBy() const;
-		void				signForm(Bureaucrat &bureaucrat);
-		virtual	void		execute(Bureaucrat const &executor) const = 0;
-		void				setSignState(bool state);
-		void				setSignBy(std::string const &name);
+		void				beSign(Bureaucrat &bureaucrat);
 		bool				getSignState() const;
 		int					getGradeSign() const;
 		int					getGradeExec() const;
+		virtual void		execute(Bureaucrat const &bureaucrat) const = 0;
 
-	class	GradeTooHighException : public std::exception
+	// Exception
+	class GradeTooHighException : public std::exception
 	{
 		public :
 			virtual const char* what() const throw();
 	};
 
-	class	GradeTooLowException : public std::exception
-	{
-		public :
-			virtual const char* what() const throw();
-	};
-
-	class	FormAlreadySignedException : public std::exception
-	{
-		public :
-			virtual const char* what() const throw();
-	};
-
-	class	FormNotSignedException : public std::exception
+	class GradeTooLowException : public std::exception
 	{
 		public :
 			virtual const char* what() const throw();
 	};
 };
+
+std::ostream	&operator<<(std::ostream &o, AForm const &value);
 
 #endif

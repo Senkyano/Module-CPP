@@ -6,11 +6,17 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 13:27:29 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 13:51:42 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 12:00:41 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotmyRequestForm.hpp"
+
+// Constructeur
+RobotmyRequestForm::RobotmyRequestForm() : AForm("RobotmyRequestForm", 72, 45), target("none")
+{
+	srand(time(0));
+}
 
 RobotmyRequestForm::RobotmyRequestForm(std::string const target) : AForm("RobotmyRequestForm", 72, 45), target(target)
 {
@@ -21,29 +27,31 @@ RobotmyRequestForm::RobotmyRequestForm(const RobotmyRequestForm &value) : AForm(
 {
 }
 
+// Desctructeur
+RobotmyRequestForm::~RobotmyRequestForm()
+{
+}
+
+// Operateur assign
 RobotmyRequestForm	&RobotmyRequestForm::operator=(const RobotmyRequestForm &value)
 {
 	AForm::operator=(value);
 	return (*this);
 }
 
-RobotmyRequestForm::~RobotmyRequestForm()
-{
-}
-
+// Member function
 void	RobotmyRequestForm::execute(Bureaucrat const &executor) const
 {
+	std::cout << executor << " Try to executed robotomized form\n";
 	if (executor.getGrade() > this->getGradeExec())
 		throw AForm::GradeTooLowException();
-	else if (executor.getGrade() < 1)
-		throw AForm::GradeTooHighException();
-	if (!this->getSignState())
-		throw AForm::FormNotSignedException();
+	std::cout << executor << " executed " << this->getName() << std::endl;
+	std::cout << "Drilling ..." << std::endl;
 	if (rand() % 2)
-		throw RobotmyRequestForm::RobotmyRequestFormException();
-	std::cout << Y << this->target << " has been robotomized " << GR << "SUCCESFULLY" << RST << std::endl;
-}
-
-const char *RobotmyRequestForm::RobotmyRequestFormException::what() const throw() {
-	return (RED "RobotmyRequestForm has failed" RST);
+	{
+		std::cout << RED << "Robotomized " << this->getName() << " has been failed\n";
+		std::cout << "Robots calling " << executor.getName() << RST <<std::endl;
+		return ;
+	}
+	std::cout << Y << this->getName() << " has been robotomized " << GR << "SUCCESFULLY" << RST << std::endl;
 }

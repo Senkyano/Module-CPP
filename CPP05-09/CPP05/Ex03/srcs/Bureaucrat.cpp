@@ -6,12 +6,13 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 16:43:43 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 15:46:19 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+// Constructeur
 Bureaucrat::Bureaucrat() : name("Employee"), grade(150)
 {
 }
@@ -28,6 +29,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat &value) : name(value.name), grade(value.
 {
 }
 
+// Destructeur
+Bureaucrat::~Bureaucrat()
+{
+}
+
+// Operator function
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &value)
 {
 	if (this == &value)
@@ -36,10 +43,9 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &value)
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat()
-{
-}
+//	Member Function
 
+//		Getter
 std::string const	Bureaucrat::getName() const
 {
 	return (this->name);
@@ -50,6 +56,7 @@ int				Bureaucrat::getGrade() const
 	return (this->grade);
 }
 
+//		Setter
 void		Bureaucrat::setGrade(int grade)
 {
 	this->grade = grade;
@@ -61,18 +68,35 @@ void		Bureaucrat::setGrade(int grade)
 
 void		Bureaucrat::decrementGrade()
 {
-	this->grade++;
-	if (this->grade > 150)
+	if (this->grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();
+	this->grade++;
 }
 
 void		Bureaucrat::incrementGrade()
 {
-	this->grade--;
-	if (this->grade < 1)
+	if (this->grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
+	this->grade--;
 }
 
+void		Bureaucrat::signForm(AForm &value)
+{
+	value.beSign(*this);
+}
+
+// ==========================
+void		Bureaucrat::executeForm(AForm &value)
+{
+	if (!value.getSignState())
+	{
+		std::cout << RED << "This form can't be execute, need a sign\n" << RST;
+		return ;
+	}
+	value.execute(*this);
+}
+
+// Exception
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return (RED "Grade is too high" RST);
@@ -83,8 +107,9 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return (RED "Grade is too low" RST);
 }
 
-void	Bureaucrat::executeForm(AForm const &form) const
+//		Operator <<
+std::ostream	&operator<<(std::ostream &o, Bureaucrat const &value)
 {
-	form.execute(*this);
+	o << value.getName() << ", bureaucrat grade " << value.getGrade();
+	return (o);
 }
-
