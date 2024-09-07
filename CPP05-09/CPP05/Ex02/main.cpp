@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/07 01:20:05 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 11:44:22 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,86 @@ int	main(void)
 	try {
 		Bureaucrat	newArrival;
 		Bureaucrat	ceo("Master", 1);
-		PresidentialPardonForm	presi("ok");
-		ShrubberyCreationForm	shrub("ok");
-		RobotmyRequestForm		robot("ok");
+		Bureaucrat	founder("founder", 25);
+		Bureaucrat	secret("secret", 72);
+		Bureaucrat	manager("manager", 100);
+		PresidentialPardonForm	presi("Random");
+		ShrubberyCreationForm	shrub("schema");
+		RobotmyRequestForm		robot("Sell Action");
 		
-		std::cout << GR << "===== Show Valid =====\n" << RST << std::endl;
+		std::cout << GR << "===== Show =====\n" << RST << std::endl;
 		std::cout << newArrival << std::endl;
 		std::cout << ceo << std::endl;
+		std::cout << founder << std::endl;
+		std::cout << secret << std::endl;
+		std::cout << manager << std::endl;
 		std::cout << std::endl;
 		std::cout << presi << std::endl;
 		std::cout << robot << std::endl;
 		std::cout << shrub << std::endl;
+		std::cout << "==== Test President Form ====\n";
+		std::cout << GR << "===== Valid =====" << RST << std::endl;
+		ceo.executeForm(presi);
+		founder.signForm(presi);
+		ceo.signForm(presi);
+		ceo.executeForm(presi);
+		std::cout << "\n";
+		std::cout << presi;
+		std::cout << RED << "===== Invalid =====\n" << RST << std::endl;
+		try {
+			std::cout << "Lower grade try to sign\n";
+			secret.signForm(presi);
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			std::cout << "Lower grade try to exec\n";
+			secret.executeForm(presi);
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		std::cout << "\n==== Test Robotomized Form ====\n";
+		std::cout << GR << "===== Valid =====" << RST << std::endl;
+		ceo.executeForm(robot);
+		founder.signForm(robot);
+		ceo.signForm(robot);
+		ceo.executeForm(robot);
+		std::cout << "\n";
+		std::cout << robot;
+		std::cout << RED << "===== Invalid =====\n" << RST << std::endl;
+		try {
+			std::cout << "Lower grade try to sign\n";
+			manager.signForm(robot);
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			std::cout << "Lower grade try to exec\n";
+			secret.executeForm(robot);
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		std::cout << "\n==== Test Shrubbery Form ====\n";
+		std::cout << GR << "===== Valid =====" << RST << std::endl;
+		ceo.executeForm(shrub);
+		founder.signForm(shrub);
+		ceo.signForm(shrub);
+		ceo.executeForm(shrub);
+		std::cout << "\n";
+		std::cout << shrub;
+		std::cout << RED << "===== Invalid =====\n" << RST << std::endl;
+		try {
+			std::cout << "Lower grade try to sign\n";
+			newArrival.signForm(shrub);
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
+		try {
+			std::cout << "Lower grade try to exec\n";
+			newArrival.executeForm(shrub);
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
+		}
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}

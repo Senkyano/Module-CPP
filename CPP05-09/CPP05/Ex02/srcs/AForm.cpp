@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:53:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/07 00:07:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 11:14:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	AForm::getGradeExec() const
 //		Setter
 void	AForm::beSign(Bureaucrat &bureaucrat)
 {
-	if (this->getGradeSign() > bureaucrat.getGrade())
+	if (bureaucrat.getGrade() <= this->getGradeSign())
 	{
 		if (this->getSignState())
 		{

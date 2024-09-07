@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/07 00:17:09 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/07 11:29:03 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ void		Bureaucrat::signForm(AForm &value)
 // ==========================
 void		Bureaucrat::executeForm(AForm &value)
 {
+	if (!value.getSignState())
+	{
+		std::cout << RED << "This form can't be execute, need a sign\n" << RST;
+		return ;
+	}
 	value.execute(*this);
 }
 
