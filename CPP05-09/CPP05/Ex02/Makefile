@@ -42,7 +42,7 @@ RESET = \033[0m
 FILE_CPP =	Bureaucrat.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
-			RobotmyRequestForm.cpp \
+			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))

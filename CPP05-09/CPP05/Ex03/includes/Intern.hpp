@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 20:54:37 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 13:53:18 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/08 17:38:40 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include <string>
 # include "AForm.hpp"
-# include "RobotmyRequestForm.hpp"
+# include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
 # include "ShrubberyCreationForm.hpp"
 

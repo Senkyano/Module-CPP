@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/07 11:44:22 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/08 17:39:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "AForm.hpp"
 #include "main.hpp"
 #include "PresidentialPardonForm.hpp"
-#include "RobotmyRequestForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
 void	testEx00(void);
