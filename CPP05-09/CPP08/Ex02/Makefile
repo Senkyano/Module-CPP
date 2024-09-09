@@ -1,5 +1,5 @@
 #   NAME
-NAME = Span
+NAME = MutantStack
 
 #---------------#
 #	includes
@@ -44,7 +44,7 @@ MAIN = main.cpp
 #--------------------------------------#
 #		File
 #-----------------------#
-FILE_CPP = Span.cpp
+FILE_CPP =
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))
