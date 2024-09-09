@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 23:36:09 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 01:09:45 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:20:56 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "main.hpp"
 # include <vector>
-# include <algorithm>
 # include <limits>
 
 class	Span

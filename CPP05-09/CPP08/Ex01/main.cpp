@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 00:50:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/05 01:52:18 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/09 20:43:31 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(void)
 	tp.addNumber(1);
 	try
 	{
-		std::cout << GR << "Longest : " << tp.longestSpan() << RST << std::endl;
+		std::cout << GR << "Longest tp : " << tp.longestSpan() << RST << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -55,7 +55,7 @@ int	main(void)
 	}
 	try
 	{
-		std::cout << GR << "Shortest : " << tp.shortestSpan() << RST << std::endl;
+		std::cout << GR << "Shortest tp : " << tp.shortestSpan() << RST << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -63,7 +63,7 @@ int	main(void)
 	}
 	try
 	{
-		std::cout << GR << "Longest : " << tmp.longestSpan() << RST << std::endl;
+		std::cout << GR << "Longest tmp : " << tmp.longestSpan() << RST << std::endl;
 	}
 	catch(const std::exception& e)
 	{
@@ -71,7 +71,7 @@ int	main(void)
 	}
 	try
 	{
-		std::cout << GR << "Shortest : " << tmp.shortestSpan() << RST << std::endl;
+		std::cout << GR << "Shortest tmp : " << tmp.shortestSpan() << RST << std::endl;
 	}
 	catch(const std::exception& e)
 	{
