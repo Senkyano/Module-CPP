@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/08 17:36:52 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/09 16:58:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	testEx02(void);
 
 int	main(void)
 {
-	// std::cout << PUR << "Test from Ex00" << RST << std::endl;
-	// testEx00();
+	std::cout << PUR << "Test from Ex00" << RST << std::endl;
+	testEx00();
 	// std::cout << PUR << "\nTest from Ex01" << RST << std::endl;
 	// // testEx01();
 	// std::cout << PUR << "\nTest from Ex02" << RST << std::endl;
