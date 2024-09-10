@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 20:56:58 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/09 16:57:33 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:38:25 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,17 @@ AForm*	Intern::makeForm(std::string const &formName, std::string const &target)
 {
 	std::string	nameForm[3] = {"robotomy request", "president pardon", "shrubbery request"};
 	AForm	*(*f[3])(std::string) = {&makeRoboto, &makePresident, &makeShrubbery};
+
 	for (int i = 0; i < 3; ++i)
 	{
 		if (nameForm[i] == formName)
 			return ((*f[i])(target));
 	}
-	std::cout << RED << "Form not found\n" << RST;
+	throw	Intern::FormNotFoundException();
 	return (NULL);
+}
+
+const char *Intern::FormNotFoundException::what() const throw()
+{
+	return ("Form not found");
 }

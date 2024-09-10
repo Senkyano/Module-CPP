@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/10 13:25:06 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/10 15:39:07 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ void	testEx02(void)
 			std::cerr << e.what() << std::endl;
 		}
 	} catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
+		std::cerr << RED << e.what() << RST << std::endl;
 	}
 	
 }
