@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:06 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/10 14:38:11 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/10 16:36:24 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,14 @@ int	main(int argc, char **argv)
 	try
 	{
 		BitcoinExchange	bit;
-		(void)bit;
+		std::deque<t_data>	tmp;
+
+		tmp = bit.getData();
+		for (std::deque<t_data>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		{
+			t_data	io = *it;
+			std::cout << io.value_btc << std::endl;
+		}
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;

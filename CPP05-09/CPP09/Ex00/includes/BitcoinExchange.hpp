@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/10 14:35:18 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/10 17:46:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_data
 	unsigned int	years;
 	unsigned int	months;
 	unsigned int	days;
-	int				value_btc;
+	double				value_btc;
 } t_data;
 
 class BitcoinExchange
@@ -43,6 +43,8 @@ class BitcoinExchange
 	
 	// Member function
 		std::deque<t_data>	getData();
+		bool				correctData(t_data srcs);
+		bool				in_normDate(std::string line);
 
 	class	OpenFileException : public std::exception {
 		public :
