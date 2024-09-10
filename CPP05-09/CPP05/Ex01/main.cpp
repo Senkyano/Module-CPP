@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 13:17:43 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/06 23:32:41 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/10 13:34:25 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ int	main(void)
 		Bureaucrat	newArrival;
 		Bureaucrat	ceo("Master", 1);
 		Form		promotions("Promotion", 50, 25);
+		std::cout << "===== Constructor by copy & operator assign =====\n";
+
+		Form		opceo("Opceo", 1, 1);
+		Form		testcopy(promotions);
+		std::cout << testcopy;
+		testcopy = opceo;
+		std::cout << testcopy;
 		
 		std::cout << GR << "===== Show Valid =====\n" << RST << std::endl;
 		std::cout << newArrival << std::endl;
@@ -84,11 +91,20 @@ void	testEx00(void)
 	try {
 		Bureaucrat	newArrival;
 		Bureaucrat	ceo("Master", 1);
+
+		std::cout << "===== Demo constructor & operator assign =====\n" << std::endl;
+		Bureaucrat	other(newArrival);
+
+		std::cout << "other constructor by copy with 'newArrival' \n";
+		std::cout << other << std::endl;
+		other = ceo;
+		std::cout << "other assign as ceo\n";
+		std::cout << other << std::endl;
 		
-		std::cout << GR << "===== Show Valid =====\nMember of compagnie\n" << RST << std::endl;
+		std::cout << GR << "\n===== Show Valid =====\nMember of compagnie\n" << RST << std::endl;
 		std::cout << newArrival << std::endl;
 		std::cout << ceo << std::endl;
-		std::cout << GR << "\nShowing increment and decrementation function\n" << RST << std::endl;
+		std::cout << GR << "Showing increment and decrementation function" << RST << std::endl;
 		try {
 			ceo.decrementGrade();
 			newArrival.incrementGrade();
@@ -97,7 +113,7 @@ void	testEx00(void)
 		} catch (std::exception &e) {
 			std::cerr << e.what() << std::endl;
 		}
-		std::cout << RED << "\n===== Showing Error =====\n" << RST << std::endl;
+		std::cout << RED << "\n=====Showing Error=====\n" << RST << std::endl;
 		try {
 			std::cout << ceo << std::endl;
 			std::cout << "Increment 2 time ceo" << std::endl;
@@ -114,7 +130,7 @@ void	testEx00(void)
 		} catch (std::exception &e) {
 			std::cerr << e.what() << std::endl;
 		}
-		std::cout << "\nSet a Bureaucrat with higher value or lower value" << std::endl;
+		std::cout << "Set a Bureaucrat with higher value or lower value" << std::endl;
 		try {
 			std::cout << "\nSet a bureaucrat above 1" << std::endl;
 			Bureaucrat	bouddha("Divinity", 0);

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 18:53:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/07 11:14:08 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/10 13:38:26 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ AForm::~AForm()
 // Operator Class
 AForm	&AForm::operator=(const AForm &value)
 {
-	if (this == &value)
-		return (*this);
-	*this = value;
+	if (this != &value) {}
 	return (*this);
 }
 
