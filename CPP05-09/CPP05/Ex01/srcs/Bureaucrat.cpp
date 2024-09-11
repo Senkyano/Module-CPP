@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:18:56 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/06 22:57:41 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/11 14:35:57 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ int				Bureaucrat::getGrade() const
 //		Setter
 void		Bureaucrat::setGrade(int grade)
 {
-	this->grade = grade;
 	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+	this->grade = grade;
 }
 
 void		Bureaucrat::decrementGrade()

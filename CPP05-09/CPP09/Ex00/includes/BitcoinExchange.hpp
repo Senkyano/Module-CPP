@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/10 17:46:36 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/11 13:02:31 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class BitcoinExchange
 	// Member function
 		std::deque<t_data>	getData();
 		bool				correctData(t_data srcs);
-		bool				in_normDate(std::string line);
+		bool				in_normData(std::string line, int method);
 
 	class	OpenFileException : public std::exception {
 		public :
