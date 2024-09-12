@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/27 11:46:27 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/12 14:11:59 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,19 @@ ScalarConverter::ScalarConverter()
 {
 }
 
+ScalarConverter::ScalarConverter(const ScalarConverter &src)
+{
+	*this = src;
+}
+
 ScalarConverter::~ScalarConverter()
 {
+}
+
+ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &src)
+{
+	if (this != &src) {}
+	return (*this);
 }
 
 void	ScalarConverter::convert(std::string const str)

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 19:46:46 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 22:31:20 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/12 14:16:06 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,16 @@ int	main()
 	B	b;
 	C	c;
 
+	std::cout << "random type\n";
 	identifyPtr(base);
 	identifyPtr2(*base);
+	std::cout << "type A\n";
 	identifyPtr(&a);
 	identifyPtr2(a);
+	std::cout << "type B\n";
 	identifyPtr(&b);
 	identifyPtr2(b);
+	std::cout << "type C\n";
 	identifyPtr(&c);
 	identifyPtr2(c);
 	

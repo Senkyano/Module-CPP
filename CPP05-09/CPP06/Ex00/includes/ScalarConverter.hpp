@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/26 15:11:29 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/12 14:09:45 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ class ScalarConverter
 {
 	public:
 		ScalarConverter();
+		ScalarConverter(const ScalarConverter &src);
 		~ScalarConverter();
 
+		ScalarConverter	&operator=(const ScalarConverter &src);
 		static void	convert(std::string const str);
 
 	class	ScalarConversionException : public std::exception
@@ -35,7 +37,5 @@ class ScalarConverter
 			}
 	};
 };
-
-
 
 #endif

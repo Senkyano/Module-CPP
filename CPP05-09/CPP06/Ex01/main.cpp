@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 19:12:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/21 19:31:32 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/12 14:07:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 	data.s1 = "Hello";
 	data.n = 42;
 	data.s2 = "World";
+	int		i = 100;
 	
 	std::cout << Y << "Data : Before Serialization" << RST << std::endl;
 	std::cout << "s1 : " << data.s1 << std::endl;
