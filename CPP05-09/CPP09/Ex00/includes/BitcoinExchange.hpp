@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/11 13:02:31 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/12 18:20:38 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "main.hpp"
 # include <fstream>
 # include <deque>
+# include <ctime>
 
 typedef struct s_data
 {
@@ -44,7 +45,9 @@ class BitcoinExchange
 	// Member function
 		std::deque<t_data>	getData();
 		bool				correctData(t_data srcs);
+		bool				in_normLigne(const char *line);
 		bool				in_normData(std::string line, int method);
+		void				evolution_Wallet(std::string file);
 
 	class	OpenFileException : public std::exception {
 		public :

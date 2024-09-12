@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/11 13:17:48 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/12 17:44:08 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ BitcoinExchange::BitcoinExchange()
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &src)
 {
-	this->dataCsv = src;
-	(void)src;
+	*this = src;
 }
 
 // Destructor
@@ -56,7 +55,9 @@ BitcoinExchange::~BitcoinExchange()
 // Operator Assign
 BitcoinExchange	&BitcoinExchange::operator=(const BitcoinExchange &src)
 {
-	if (this != src)
+	if (this != &src) {
+		*this = src;
+	}
 	return (*this);
 }
 
@@ -68,22 +69,38 @@ std::deque<t_data>	BitcoinExchange::getData()
 
 bool				BitcoinExchange::correctData(t_data src)
 {
+	time_t			actual = std::time(0);
+	tm				*ltm = std::localtime(&actual);
 	unsigned int	month_days[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
-	if ((src.months <= 12 && src.months > 0) && src.days > 0
-		&& month_days[src.months - 1] >= src.days)
-		return (true);
+	if ((int)src.years == (1900 + ltm->tm_year)
+		&& (int)src.months >= ltm->tm_mon
+			&& (int)src.days > ltm->tm_mday)
+		return (false);
+	if ((int)src.years <= (1900 + ltm->tm_year))
+	{
+		if ((src.years % 4) != 0 && src.months == 2 && src.days > 0
+			&& src.days > (month_days[1] - 1))
+			return (false);
+		if ((src.months <= 12 && src.months > 0) && src.days > 0
+			&& (month_days[src.months - 1] >= src.days))
+			return (true);
+	}
 	return (false);
 }
 
 bool				BitcoinExchange::in_normData(std::string line, int method)
 {
-	if (12 < line.size())
+	if (12 < line.size() && this->in_normLigne((line).c_str()))
 	{
+		size_t pos  = (line).find("-");
+		size_t pos2 = (line).find_last_of("-");
+		if (((line).find_last_of(",") != (line).find(","))
+			|| ((line).find_last_of("|") != (line).find("|"))
+				|| ((line).find_last_of(".") != (line).find(".")))
+			return (false);
 		if (method == 0)
 		{
-			size_t pos  = (line).find("-");
-			size_t pos2 = (line).find_last_of("-");
 			size_t pos3 = (line).find_last_of(",");
 			if (pos != 0 && pos2 != pos
 				&& (pos2 - (pos + 1)) == 2 && (pos3 - (pos2 + 1)) == 2)
@@ -93,8 +110,6 @@ bool				BitcoinExchange::in_normData(std::string line, int method)
 		{
 			if (14 > line.size())
 				return (false);
-			size_t pos  = (line).find("-");
-			size_t pos2 = (line).find_last_of("-");
 			size_t pos3 = (line).find_last_of("|");
 			if (pos != 0 && pos2 != pos
 				&& (pos2 - (pos + 1)) == 2 && (pos3 - (pos2 + 1)) == 3)
@@ -102,6 +117,17 @@ bool				BitcoinExchange::in_normData(std::string line, int method)
 		}
 	}
 	return (false);
+}
+
+bool			BitcoinExchange::in_normLigne(const char *line)
+{
+	for (int i = 0; line[i]; ++i)
+	{
+		if (!isdigit(line[i]) && line[i] != '|' && line[i] != ','
+			&& line[i] != '-' && line[i] != '.' && !isspace(line[i]))
+			return (false);
+	}
+	return (true);
 }
 
 // Exception
