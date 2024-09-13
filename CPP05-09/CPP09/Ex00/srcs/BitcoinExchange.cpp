@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 16:30:03 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 18:42:01 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ BitcoinExchange::BitcoinExchange()
 			tmp.months = std::atoi(line.c_str() + pos + 1);
 			tmp.days = std::atoi(line.c_str() + pos + 4);
 			tmp.value_btc = std::atof(line.c_str() + pos + 7);
-			if (this->correctData(tmp))
+			if (this->correctData(tmp) && tmp.value_btc >= 0)
 				this->dataCsv.push_back(tmp);
 		}
 	}
@@ -93,7 +93,7 @@ bool				BitcoinExchange::in_normData(std::string line, int method)
 	if (12 < line.size() && this->in_normLigne((line).c_str()))
 	{
 		size_t pos  = (line).find("-");
-		size_t pos2 = (line).find_last_of("-");
+		size_t pos2 = (line).find("-", pos + 1);
 		if (((line).find_last_of(",") != (line).find(","))
 			|| ((line).find_last_of("|") != (line).find("|"))
 				|| ((line).find_last_of(".") != (line).find(".")))
@@ -148,8 +148,11 @@ void			BitcoinExchange::evolution_Wallet(std::string file)
 			tmp.days = std::atoi(line.c_str() + pos + 4);
 			tmp.value_btc = std::atof(line.c_str() + pos + 9);
 			if (this->correctData(tmp))
-			{
 				this->exchange(tmp);
+			else
+			{
+				std::cout << RED << "Error : Bad input => ";
+				std::cout << tmp.years << "-" << tmp.months << "-" << tmp.days << RST << std::endl;
 			}
 		}
 	}
@@ -158,7 +161,7 @@ void			BitcoinExchange::evolution_Wallet(std::string file)
 t_data			BitcoinExchange::srch_prochData(t_data src)
 {
 	std::deque<t_data>	tmp = this->dataCsv;
-	t_data				proch= {0,0,0,0};
+	t_data				proch = {0,0,0,0};
 
 	for (std::deque<t_data>::iterator it = tmp.begin(); it != tmp.end(); ++it)
 	{
@@ -168,14 +171,24 @@ t_data			BitcoinExchange::srch_prochData(t_data src)
 			return (proch);
 		proch = *it;
 	}
-	return ((t_data){0,0,0,0});
+	return (proch);
 }
 
 void			BitcoinExchange::exchange(t_data src)
 {
 	t_data	tmp = this->srch_prochData(src);
-	std::cout << src.years << "-" << src.months << "-" << src.days << " : " << src.value_btc << std::endl;
-	std::cout << tmp.years << "-" << tmp.months << "-" << tmp.days << " : " << tmp.value_btc << std::endl;
+	(void)tmp;
+	if (src.value_btc < 0)
+		std::cout << RED << "Error : not a positif number\n" << RST;
+	else if (src.value_btc > 1000)
+		std::cout << RED << "Error : too large number\n" << RST;
+	else
+	{
+		std::cout << GR << tmp.years << "-";
+		std::cout << tmp.months << "-";
+		std::cout << tmp.days << " => ";
+		std::cout << src.value_btc << " = " << tmp.value_btc * src.value_btc << "$" << RST <<std::endl;
+	}
 }
 
 // Exception

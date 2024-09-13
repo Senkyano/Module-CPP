@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 20:18:06 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 18:38:46 by rihoy            ###   ########.fr       */
+/*   Created: 2024/05/21 22:16:02 by rihoy             #+#    #+#             */
+/*   Updated: 2024/09/09 20:53:52 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
-#include "BitcoinExchange.hpp"
-#include <deque>
+#ifndef MAIN_HPP
+# define MAIN_HPP
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2) {
-		std::cout << RED << "./btc Could not open file\n" << RST;
-		return (1);
-	}
-	std::string	input = std::string(argv[1]);
-	try
-	{
-		BitcoinExchange	bit;
-		bit.evolution_Wallet(input);
-	}
-	catch(const std::exception& e) {
-		std::cerr << e.what() << std::endl;
-	}
-	
-	return (0);
-}
+# include <iostream>
+# include <string>
+# include <cstring>
+# include <cstdlib>
+
+# define BLK "\e[0;90m"
+# define RED "\e[1;31m"
+# define GR "\e[1;92m"
+# define Y "\e[1;93m"
+# define BLU "\e[1;94m"
+# define PUR "\e[1;95m"
+# define CY "\e[1;96m"
+# define WH "\e[0;97m"
+# define RST "\e[0m"
+
+#endif
