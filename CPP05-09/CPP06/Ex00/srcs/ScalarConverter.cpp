@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 14:22:15 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 14:45:34 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,11 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &src)
 
 void	ScalarConverter::convert(std::string const str)
 {
-	double	f;
-	bool	errorHandling;
+	double	f = 0;
+	bool	errorHandling = false;
 
-	f = 0;
-	errorHandling = false;
 	if (str.length() == 1 && !isdigit(str[0]))
-		f = static_cast<float>(str[0]);
+		f = static_cast<int>(str[0]);
 	else if (str.length() != 1 && !onlyDigits(str)
 		&& strcmp(str.c_str(), "-inff") && strcmp(str.c_str(), "inff")
 			&& strcmp(str.c_str(), "nan") && strcmp(str.c_str(), "nanf") 
