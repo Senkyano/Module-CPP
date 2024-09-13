@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 19:46:46 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 15:18:37 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 15:24:09 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ static void	identifyPtr2(Base &p)
 		A	&a = dynamic_cast<A&>(p);
 		(void)a;
 		std::cout << "A" << std::endl;
-		return ;
-	} catch (std::exception &e) { }
-	std::cout << "Unknown Type" << std::endl;
+	} catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
 }
 
 int	main()
@@ -85,6 +85,10 @@ int	main()
 	identifyPtr(&c);
 	identifyPtr2(c);
 	
+	Base	p;
+	std::cout << "Unkonw type\n";
+	identifyPtr(&p);
+	identifyPtr2(p);
 	delete base;
 	return 0;
 }
