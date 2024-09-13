@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 14:16:28 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 16:30:03 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,9 +148,34 @@ void			BitcoinExchange::evolution_Wallet(std::string file)
 			tmp.days = std::atoi(line.c_str() + pos + 4);
 			tmp.value_btc = std::atof(line.c_str() + pos + 9);
 			if (this->correctData(tmp))
-				std::cout << tmp.years << "-" << tmp.months << "-" << tmp.days << " | " << tmp.value_btc << std::endl;
+			{
+				this->exchange(tmp);
+			}
 		}
 	}
+}
+
+t_data			BitcoinExchange::srch_prochData(t_data src)
+{
+	std::deque<t_data>	tmp = this->dataCsv;
+	t_data				proch= {0,0,0,0};
+
+	for (std::deque<t_data>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+	{
+		t_data	actual = *it;
+
+		if (actual.years >= src.years && (actual.months > src.months || (actual.days >= src.days && actual.months == src.months)))
+			return (proch);
+		proch = *it;
+	}
+	return ((t_data){0,0,0,0});
+}
+
+void			BitcoinExchange::exchange(t_data src)
+{
+	t_data	tmp = this->srch_prochData(src);
+	std::cout << src.years << "-" << src.months << "-" << src.days << " : " << src.value_btc << std::endl;
+	std::cout << tmp.years << "-" << tmp.months << "-" << tmp.days << " : " << tmp.value_btc << std::endl;
 }
 
 // Exception

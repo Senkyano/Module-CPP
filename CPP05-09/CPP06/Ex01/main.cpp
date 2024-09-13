@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 19:12:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 14:24:00 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 17:23:53 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(void)
 	Data*		ptr = Serialization::deserialize(raw);
 	
 	std::cout << GR << "Data : After Deserialization" << RST << std::endl;
-	std::cout << "data : " << &ptr << std::endl;
+	std::cout << "data : " << ptr << std::endl;
 	std::cout << "s1 : " << ptr->s1 << std::endl;
 	std::cout << "n : " << ptr->n << std::endl;
 	std::cout << "s2 : " << ptr->s2 << std::endl;

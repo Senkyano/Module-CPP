@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/12 18:20:38 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 15:55:59 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ class BitcoinExchange
 		BitcoinExchange	&operator=(const BitcoinExchange &src);
 	
 	// Member function
-		std::deque<t_data>	getData();
-		bool				correctData(t_data srcs);
-		bool				in_normLigne(const char *line);
-		bool				in_normData(std::string line, int method);
-		void				evolution_Wallet(std::string file);
+		std::deque<t_data>		getData();
+		bool					correctData(t_data srcs);
+		bool					in_normLigne(const char *line);
+		bool					in_normData(std::string line, int method);
+		void					evolution_Wallet(std::string file);
+		void					exchange(t_data src);
+		t_data					srch_prochData(t_data src);
 
 	class	OpenFileException : public std::exception {
 		public :

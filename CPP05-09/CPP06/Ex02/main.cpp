@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 19:46:46 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 15:24:09 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 15:26:56 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main()
 	std::cout << "type C\n";
 	identifyPtr(&c);
 	identifyPtr2(c);
-	
+
 	Base	p;
 	std::cout << "Unkonw type\n";
 	identifyPtr(&p);
