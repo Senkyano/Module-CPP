@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/12 17:44:08 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 14:16:28 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ BitcoinExchange::BitcoinExchange()
 
 	std::cout << GR << "Default constructor call" << RST << std::endl;
 
-	dataFile.exceptions(std::ifstream::badbit);
 	dataFile.open("data.csv", std::ios::in);
 	if (!dataFile.is_open())
 		throw	BitcoinExchange::OpenFileException();
 	while (std::getline(dataFile, line))
 	{
-		if (line != "date,exchange_rate" && this->in_normData(line, 0))
+		if (this->in_normData(line, 0))
 		{
 			size_t pos = (line).find("-");
 			tmp.years = std::atoi(line.c_str());
@@ -73,11 +72,11 @@ bool				BitcoinExchange::correctData(t_data src)
 	tm				*ltm = std::localtime(&actual);
 	unsigned int	month_days[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
-	if ((int)src.years == (1900 + ltm->tm_year)
-		&& (int)src.months >= ltm->tm_mon
-			&& (int)src.days > ltm->tm_mday)
+	if (src.years == (unsigned int)(1900 + ltm->tm_year)
+		&& ((src.months == (unsigned int)ltm->tm_mon + 1 && (int)src.days >= ltm->tm_mday)
+			|| (unsigned int)ltm->tm_mon + 1 < src.months))
 		return (false);
-	if ((int)src.years <= (1900 + ltm->tm_year))
+	if (src.years <= (unsigned int)(1900 + ltm->tm_year))
 	{
 		if ((src.years % 4) != 0 && src.months == 2 && src.days > 0
 			&& src.days > (month_days[1] - 1))
@@ -128,6 +127,30 @@ bool			BitcoinExchange::in_normLigne(const char *line)
 			return (false);
 	}
 	return (true);
+}
+
+void			BitcoinExchange::evolution_Wallet(std::string file)
+{
+	std::fstream	inputFile;
+	std::string		line;
+	t_data			tmp;
+
+	inputFile.open(file.c_str(), std::ios::in);
+	if (!inputFile.is_open())
+		throw	BitcoinExchange::OpenFileException();
+	while (std::getline(inputFile, line))
+	{
+		if (this->in_normData(line, 1))
+		{
+			size_t pos = (line).find("-");
+			tmp.years = std::atoi(line.c_str());
+			tmp.months = std::atoi(line.c_str() + pos + 1);
+			tmp.days = std::atoi(line.c_str() + pos + 4);
+			tmp.value_btc = std::atof(line.c_str() + pos + 9);
+			if (this->correctData(tmp))
+				std::cout << tmp.years << "-" << tmp.months << "-" << tmp.days << " | " << tmp.value_btc << std::endl;
+		}
+	}
 }
 
 // Exception

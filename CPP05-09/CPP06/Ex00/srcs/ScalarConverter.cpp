@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 22:29:30 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/12 14:11:59 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 14:22:15 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,7 +134,6 @@ bool	isFloat(std::string const str)
 			return (false);
 		i++;
 	}
-	std::cout << str[i] << std::endl;
 	if (str[i] != 'f')
 		return (false);
 	return (true);

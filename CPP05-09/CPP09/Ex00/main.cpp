@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:06 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/12 17:24:53 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/13 13:42:36 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ int	main(int argc, char **argv)
 
 		(void)bit;
 		tmp = bit.getData();
-		for (std::deque<t_data>::iterator it = tmp.begin(); it != tmp.end(); ++it)
-		{
-			t_data	io = *it;
-			std::cout << io.value_btc << std::endl;
-		}
+		// for (std::deque<t_data>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+		// {
+		// 	t_data	io = *it;
+		// 	std::cout << io.years << " : ";
+		// 	std::cout << io.value_btc << std::endl;
+		// }
+		bit.evolution_Wallet(input);
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;
