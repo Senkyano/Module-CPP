@@ -1,5 +1,5 @@
 #   NAME
-NAME = EasyFind
+NAME = RPN
 
 #---------------#
 #	includes
@@ -44,7 +44,7 @@ MAIN = main.cpp
 #--------------------------------------#
 #		File
 #-----------------------#
-FILE_CPP =
+FILE_CPP = RPN.cpp
 
 SRC = $(addprefix $(SRCS)/, $(FILE_CPP))
 OBJ = $(patsubst %.cpp, $(OBJS)/%.o, $(FILE_CPP))
