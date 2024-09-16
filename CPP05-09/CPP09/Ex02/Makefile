@@ -1,5 +1,5 @@
 #   NAME
-NAME = EasyFind
+NAME = PMergeMe
 
 #---------------#
 #	includes

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 23:43:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/08/30 00:00:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/16 16:58:51 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,32 @@ class	Array
 		Array(Array const &other) {
 			this->sizeArray = other.sizeArray;
 			this->array = new T[other.sizeArray];
+			if (other->sizeArray != 0)
+			{
+				for (unsigned int i = 0; i < this->sizeArray; ++i)
+					this->array[i] = other.array[i];
+			}
 		};
 		Array	&operator=(Array const &other)
 		{
-			this->sizeArray = other.sizeArray;
-			this->array = new T[other.sizeArray];
-			for (unsigned int i = 0; i < other.sizeArray; i++)
-				this->array[i] = other.array[i];
+			if (other.size() != 0)
+			{
+				this->sizeArray = other.sizeArray;
+				this->array = new T[other.sizeArray];
+				for (unsigned int i = 0; i < other.sizeArray; i++)
+					this->array[i] = other.array[i];
+			}
 			return (*this);
 		};
-		~Array() {};
+		~Array() {
+			if (this->array != NULL)
+				delete [] this->array;
+		};
 		
 // setter
 		void	setArray(T *array) {
-			this->array = array;
+			for (unsigned int i = 0; i < this->size(); ++i)
+				this->array[i] = array[i];
 		};
 //operator
 		T	operator[](int i) {
