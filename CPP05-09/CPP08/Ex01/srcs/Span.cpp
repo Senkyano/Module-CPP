@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 23:58:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/17 20:39:27 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/17 22:44:02 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,15 @@ int		Span::shortestSpan()
 {
 	if (this->tab.size() <= 1)
 		throw Span::SpanElementException();
-	std::vector<int>	tmp;
-	tmp = this->tab;
-	tmp.sort();
+	std::vector<int>	tmp = this->tab;
+	std::sort(tmp.begin(), tmp.end());
+	int	min;
+	min = tmp[1] - tmp[0];
+	for (unsigned int i = 1; i < tmp.size(); ++i)
+	{
+		if (tmp[i] - tmp[i - 1] < min)
+			min = tmp[i] - tmp[i - 1];
+	}
 	return (min);
 }
 
@@ -95,7 +101,7 @@ int		Span::longestSpan()
 			nbr2[1] = i;
 		}
 	}
-	return (nbr2[1] > nbr1[1] ? nbr2[1] - nbr1[1] : nbr1[1] - nbr2[1]);
+	return (nbr2[0] > nbr1[0] ? nbr2[0] - nbr1[0] : nbr1[0] - nbr2[0]);
 }
 
 // Exception
