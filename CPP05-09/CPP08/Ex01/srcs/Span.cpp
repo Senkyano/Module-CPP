@@ -6,11 +6,12 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 23:58:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/09 20:44:09 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/17 20:39:27 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+#include <algorithm>
 
 // Span Constructor
 Span::Span() : size(0)
@@ -62,35 +63,9 @@ int		Span::shortestSpan()
 {
 	if (this->tab.size() <= 1)
 		throw Span::SpanElementException();
-	//				nbr		,   index;
-	int	nbr1[2] = {this->tab[0], 0}; // Min 1
-	int	nbr2[2] = {this->tab[1], 1}; // Min 2 > Min 1
-	if (this->tab[1] < this->tab[0])
-	{
-		nbr1[0] = this->tab[1];
-		nbr1[1] = 1;
-		nbr2[0] = this->tab[0];
-		nbr2[1] = 0;
-	}
-	for (unsigned i = 2; i < this->tab.size(); ++i)
-	{
-		if (this->tab[i] < nbr1[0])
-		{
-			if (nbr1[0] < nbr2[0])
-			{
-				nbr2[0] = nbr1[0];
-				nbr2[1] = nbr1[1];
-			}
-			nbr1[0] = this->tab[i];
-			nbr1[1] = i;
-		}
-		else if (this->tab[i] < nbr2[0])
-		{
-			nbr2[0] = this->tab[i];
-			nbr2[1] = i;
-		}
-	}
-	int	min = (nbr2[1] - nbr1[1]);
+	std::vector<int>	tmp;
+	tmp = this->tab;
+	tmp.sort();
 	return (min);
 }
 
