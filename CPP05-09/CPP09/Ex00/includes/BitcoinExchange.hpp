@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 15:55:59 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 18:41:37 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,20 @@
 
 # include "main.hpp"
 # include <fstream>
-# include <deque>
 # include <ctime>
+# include <map>
 
 typedef struct s_data
 {
 	unsigned int	years;
 	unsigned int	months;
 	unsigned int	days;
-	double				value_btc;
 } t_data;
 
 class BitcoinExchange
 {
 	private:
-		std::deque<t_data>	dataCsv;
+		std::map<std::string, double>	dataCsv;
 
 	public:
 	// Constructor
@@ -43,7 +42,7 @@ class BitcoinExchange
 		BitcoinExchange	&operator=(const BitcoinExchange &src);
 	
 	// Member function
-		std::deque<t_data>		getData();
+		std::map<std::string, double>	getData();
 		bool					correctData(t_data srcs);
 		bool					in_normLigne(const char *line);
 		bool					in_normData(std::string line, int method);

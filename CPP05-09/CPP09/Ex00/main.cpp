@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:06 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/13 18:38:46 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 18:41:07 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	main(int argc, char **argv)
 	try
 	{
 		BitcoinExchange	bit;
-		bit.evolution_Wallet(input);
+		(void)bit;
+		// bit.evolution_Wallet(input);
 	}
 	catch(const std::exception& e) {
 		std::cerr << e.what() << std::endl;

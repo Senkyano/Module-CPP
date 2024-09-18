@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:54:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/15 20:41:22 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 13:46:35 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # include "main.hpp"
 # include <stack>
+# include <list>
 
 class	RPN
 {
 	private :
-		std::stack<int>		num;
-		std::stack<char>	ope;
+		std::stack<int, std::list<int> >		num;
+		std::stack<char, std::list<char> >	ope;
 
 	public :
 		RPN();

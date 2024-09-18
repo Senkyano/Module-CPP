@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:59:24 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/17 16:45:12 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 13:35:32 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,19 @@ std::string	PMergeMe::getLstNum()
 // VECTOR
 void	PMergeMe::fillContainerVec(std::vector<int> &container)
 {
-	std::cout << this->lstNum << std::endl;
+	for (unsigned int i = 0; i < this->lstNum.length(); ++i)
+	{
+		if (isdigit(this->lstNum[i]))
+		{
+			std::string tmp;
+			while (isdigit(this->lstNum[i]))
+			{
+				tmp += this->lstNum[i];
+				++i;
+			}
+			container.push_back(atoi(tmp.c_str()));
+		}
+	}
 }
 
 // EXCEPTION

@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 18:54:07 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/15 23:13:23 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 13:48:15 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	RPN::calcul(std::string str)
 		{
 			if (this->num.top() == 0)
 			{
-				std::cout << GR << "\rResult : infinity\n" << RST;
+				std::cout << RED << "\rResult : Error\n" << RST;
 				return ;
 			}
 			result = result / this->num.top();
