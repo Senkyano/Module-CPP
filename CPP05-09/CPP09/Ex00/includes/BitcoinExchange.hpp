@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:01 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/18 18:41:37 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 13:25:24 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,11 @@ class BitcoinExchange
 	
 	// Member function
 		std::map<std::string, double>	getData();
-		bool					correctData(t_data srcs);
+		bool					correctData(std::string date);
 		bool					in_normLigne(const char *line);
 		bool					in_normData(std::string line, int method);
 		void					evolution_Wallet(std::string file);
-		void					exchange(t_data src);
-		t_data					srch_prochData(t_data src);
+		double					srch_prochData(std::string date);
 
 	class	OpenFileException : public std::exception {
 		public :

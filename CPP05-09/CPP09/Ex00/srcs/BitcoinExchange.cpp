@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/18 21:24:42 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 13:56:33 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ BitcoinExchange::BitcoinExchange()
 			size_t pos2 = (line).find_last_of(" \n\t");
 			std::string tmp = line.substr(pos2 + 1, pos - 1);
 			double value_btc = std::atof(line.c_str() + (pos + 1));
-			// std::cout << value_btc << std::endl;
-			(void)value_btc;
-			(void)tmp;
-			// if (this->correctData(tmp) && value_btc >= 0)
-			this->dataCsv[tmp] = value_btc;
+			if (correctData(tmp))
+				this->dataCsv[tmp] = value_btc;
 		}
 	}
 	dataFile.close();
@@ -67,14 +64,18 @@ std::map<std::string, double>	BitcoinExchange::getData()
 	return (this->dataCsv);
 }
 
-bool				BitcoinExchange::correctData(t_data src)
+bool				BitcoinExchange::correctData(std::string date)
 {
 	time_t			actual = std::time(0);
 	tm				*ltm = std::localtime(&actual);
+	t_data			src;
 	unsigned int	month_days[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
+	src.years = std::atoi(date.c_str());
+	src.months = std::atoi(date.c_str() + 5);
+	src.days = std::atoi(date.c_str() + 8);
 	if (src.years == (unsigned int)(1900 + ltm->tm_year)
-		&& ((src.months == (unsigned int)ltm->tm_mon + 1 && (int)src.days >= ltm->tm_mday)
+		&& ((src.months == (unsigned int)ltm->tm_mon + 1 && (int)src.days > ltm->tm_mday)
 			|| (unsigned int)ltm->tm_mon + 1 < src.months))
 		return (false);
 	if (src.years <= (unsigned int)(1900 + ltm->tm_year))
@@ -113,9 +114,9 @@ bool				BitcoinExchange::in_normData(std::string line, int method)
 		{
 			if (14 > line.size())
 				return (false);
-			size_t pos_start_data = (line).find_last_of(" \n\t") + 1;
-			size_t pos3 = (line).find_last_of("|");
-			if (pos3 - pos_start_data != 12)
+			size_t pos_start_data = (line).find_first_not_of(" \n\t");
+			size_t pos3 = (line).find("|");
+			if ((pos3) - pos_start_data != 11)
 				return (false);
 			if (pos != 0 && pos2 != pos
 				&& (pos2 - (pos + 1)) == 2 && (pos3 - (pos2 + 1)) == 3)
@@ -129,7 +130,7 @@ bool			BitcoinExchange::in_normLigne(const char *line)
 {
 	for (int i = 0; line[i]; ++i)
 	{
-		if (!isdigit(line[i]) && line[i] != '|' && line[i] != ','
+		if ((line[i] < '0' || line[i] > '9') && line[i] != '|' && line[i] != ','
 			&& line[i] != '-' && line[i] != '.' && !isspace(line[i]))
 			return (false);
 	}
@@ -138,61 +139,52 @@ bool			BitcoinExchange::in_normLigne(const char *line)
 
 void			BitcoinExchange::evolution_Wallet(std::string file)
 {
-	// std::fstream	inputFile;
-	// std::string		line;
-	// t_data			tmp;
-	(void)file;
-	// inputFile.open(file.c_str(), std::ios::in);
-	// if (!inputFile.is_open())
-	// 	throw	BitcoinExchange::OpenFileException();
-	// while (std::getline(inputFile, line))
-	// {
-	// 	if (this->in_normData(line, 1))
-	// 	{
-	// 		size_t pos = (line).find("-");
-	// 		tmp.years = std::atoi(line.c_str());
-	// 		tmp.months = std::atoi(line.c_str() + pos + 1);
-	// 		tmp.days = std::atoi(line.c_str() + pos + 4);
-	// 		tmp.value_btc = std::atof(line.c_str() + pos + 9);
-	// 		if (this->correctData(tmp))
-	// 			this->exchange(tmp);
-	// 	}
-	// }
+	std::fstream	inputFile;
+	std::string		line;
+
+	inputFile.open(file.c_str(), std::ios::in);
+	if (!inputFile.is_open())
+		throw	BitcoinExchange::OpenFileException();
+	while (std::getline(inputFile, line))
+	{
+		if (this->in_normData(line, 1))
+		{
+			size_t pos = (line).find("|");
+			size_t pos2 = (line).find_first_not_of(" \n\t");
+			std::string tmp = line.substr(pos2, pos - 1);
+			double value_btc = std::atof(line.c_str() + (pos + 1));
+			if (correctData(tmp) && value_btc > 0 && value_btc < 1000)
+			{
+				std::cout << tmp << " => ";
+				double taux = this->srch_prochData(tmp);
+				std::cout << taux << " => " << taux * value_btc << std::endl;
+			}
+			else
+			{
+				if (value_btc < 0)
+					std::cout << RED << "Error : not a positive number.\n" << RST;
+				else if (value_btc > 1000)
+					std::cout << RED << "Error : too large number.\n" << RST;
+				else
+					std::cout << RED << "Error : bad input => " << tmp << RST << std::endl;
+			}
+		}
+		else
+			std::cout << RED << "Error : bad input => " << line << RST << std::endl;
+	}
 }
 
-t_data			BitcoinExchange::srch_prochData(t_data src)
+double			BitcoinExchange::srch_prochData(std::string date)
 {
-	return (src);
-	// std::map<t_data, double>	tmp = this->dataCsv;
-	// t_data				proch = {0,0,0,0};
+	std::map<std::string, double>	tmp = this->dataCsv;
+	double							prch_value = 0;
 
-	// for (std::map<t_data, double>::iterator it = tmp.begin(); it != tmp.end(); ++it)
-	// {
-	// 	t_data	actual = *it;
-
-	// 	if (actual.years >= src.years && (actual.months > src.months || (actual.days >= src.days && actual.months == src.months)))
-	// 		return (proch);
-	// 	proch = *it;
-	// }
-	// return (proch);
-}
-
-void			BitcoinExchange::exchange(t_data src)
-{
-	(void)src;
-	// t_data	tmp = this->srch_prochData(src);
-	// (void)tmp;
-	// if (src.value_btc < 0)
-	// 	std::cout << RED << "Error : not a positif number\n" << RST;
-	// else if (src.value_btc > 1000)
-	// 	std::cout << RED << "Error : too large number\n" << RST;
-	// else
-	// {
-	// 	std::cout << GR << tmp.years << "-";
-	// 	std::cout << tmp.months << "-";
-	// 	std::cout << tmp.days << " => ";
-	// 	std::cout << src.value_btc << " = " << tmp.value_btc * src.value_btc << "$" << RST <<std::endl;
-	// }
+	for (std::map<std::string, double>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+	{
+		if (date >= it->first)
+			prch_value = it->second;
+	}
+	return (prch_value);
 }
 
 // Exception

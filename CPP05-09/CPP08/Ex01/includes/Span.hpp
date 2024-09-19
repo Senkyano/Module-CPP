@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 23:36:09 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/09 20:20:56 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 15:46:52 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ class	Span
 		~Span();
 	
 	// Member function
+		void	addNumber1(int nbr_arg, ...);
 		void	addNumber(int nbr);
+		void	addNumber(std::vector<int> other);
+		void	addNumber(Span &other);
+		void	addNumberRandom(int nbr, unsigned int many);
 		int		shortestSpan();
 		int		longestSpan();
 

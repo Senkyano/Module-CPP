@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 00:50:28 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/18 21:03:51 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 15:48:54 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(void)
 {
 	Span	tmp(10000);
 	Span	tmp2(20000);
-	Span	tp(5);
+	Span	tp(6);
+	// std::vector<int> lol = {1, 5, 9, 50, 88888888};
 
 	try
 	{
@@ -41,7 +42,7 @@ int	main(void)
 		else
 			tmp.addNumber(index * index);
 	}
-	for (int index = -14647; index < 5353; ++index)
+	for (int index = -14647; index < 5348; ++index)
 	{
 		if (index == 0)
 			tmp2.addNumber(200000);
@@ -55,11 +56,14 @@ int	main(void)
 				tmp2.addNumber(index * index);
 		}
 	}
-	tp.addNumber(-23);
+	Span tp2(5000);
+	tp.addNumber1(2, 48, 20);
 	tp.addNumber(100);
 	tp.addNumber(230);
-	tp.addNumber(254);
-	tp.addNumber(1);
+	tp.addNumber(99);
+	tp.addNumberRandom(125, 2);
+	tp2.addNumberRandom(9991, 5000);
+	tmp2.addNumber(tp);
 	try
 	{
 		std::cout << GR << "Longest tp : " << tp.longestSpan() << RST << std::endl;
@@ -103,6 +107,22 @@ int	main(void)
 	try
 	{
 		std::cout << GR << "Shortest tmp2 : " << tmp2.shortestSpan() << RST << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RST << std::endl;
+	}
+	try
+	{
+		std::cout << GR << "Longest tp2 : " << tp2.longestSpan() << RST << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RST << std::endl;
+	}
+	try
+	{
+		std::cout << GR << "Shortest tp2 : " << tp2.shortestSpan() << RST << std::endl;
 	}
 	catch(const std::exception& e)
 	{

@@ -6,12 +6,15 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 23:58:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/18 21:02:16 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 15:53:29 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <algorithm>
+#include <cstdarg>
+#include <cassert>
+#include <limits>
 
 // Span Constructor
 Span::Span() : size(0)
@@ -43,6 +46,59 @@ Span::~Span()
 }
 
 // Span Member function
+// 	The first parameter is the number of arguments we have
+//	and the other's is the value
+
+void	Span::addNumberRandom(int nbr, unsigned int many)
+{
+	try
+	{
+		std::srand(time(NULL) + nbr);
+		for (unsigned int i = 0; i < many; ++i)
+		{
+			int random = rand() * (nbr) * (nbr * i);
+			if (nbr < -2147483647 || nbr > 2147483647)
+				throw Span::SpanOutException();
+			if (this->tab.size() >= this->size)
+				throw Span::SpanFullException();
+			this->tab.push_back(random);
+		}
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << RST << std::endl;
+	}
+}
+
+void	Span::addNumber(std::vector<int> other)
+{
+	try
+	{
+		if (this->tab.size() >= this->size)
+			throw Span::SpanFullException();
+		this->tab.insert(other.end(), other.begin(), other.end());
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << RST << std::endl;
+	}
+}
+
+void	Span::addNumber(Span &other)
+{
+	try
+	{
+		std::vector<int> tmp = other.tab;
+		if (this->tab.size() >= this->size)
+			throw Span::SpanFullException();
+		this->tab.insert(this->tab.end(), tmp.begin(), tmp.end());
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << RST << std::endl;
+	}
+}
+
 void	Span::addNumber(int nbr)
 {
 	try
@@ -51,12 +107,36 @@ void	Span::addNumber(int nbr)
 			throw Span::SpanOutException();
 		if (this->tab.size() >= this->size)
 			throw Span::SpanFullException();
+		this->tab.push_back(nbr);
 	}
 	catch (const std::exception &e)
 	{
 		std::cout << RED << e.what() << RST << std::endl;
 	}
-	this->tab.push_back(nbr);
+}
+
+void	Span::addNumber1(int nbr_arg, ...)
+{
+	va_list	args;
+	int	num = 0;
+
+	try
+	{
+		va_start(args, nbr_arg);
+		for (int i = 0; i < nbr_arg && (num = va_arg(args, int)) != 0; ++i)
+		{
+			if (num < -2147483647 || num > 2147483647)
+				throw Span::SpanOutException();
+			if (this->tab.size() >= this->size)
+				throw Span::SpanFullException();
+			this->tab.push_back(num);
+		}
+		va_end(args);
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << RED << e.what() << RST << std::endl;
+	}
 }
 
 int		Span::shortestSpan()
