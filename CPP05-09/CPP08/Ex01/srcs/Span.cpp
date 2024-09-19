@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 23:58:20 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/17 22:44:02 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 21:02:16 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,29 +79,9 @@ int		Span::longestSpan()
 {
 	if (this->tab.size() <= 1)
 		throw Span::SpanElementException();
-	int	nbr1[2] = {this->tab[0], 0}; // Min 1
-	int	nbr2[2] = {this->tab[1], 1}; // Max 1
-	if (this->tab[1] < this->tab[0])
-	{
-		nbr1[0] = this->tab[1];
-		nbr1[1] = 1;
-		nbr2[0] = this->tab[0];
-		nbr2[0] = 0;
-	}
-	for (unsigned int i = 2; i < this->tab.size(); ++i)
-	{
-		if (this->tab[i] < nbr1[0])
-		{
-			nbr1[0] = this->tab[i];
-			nbr1[1] = i;
-		}
-		if (this->tab[i] > nbr2[0])
-		{
-			nbr2[0] = this->tab[i];
-			nbr2[1] = i;
-		}
-	}
-	return (nbr2[0] > nbr1[0] ? nbr2[0] - nbr1[0] : nbr1[0] - nbr2[0]);
+	std::vector<int>	tmp = this->tab;
+	std::sort(tmp.begin(), tmp.end());
+	return (std::abs(tmp[tmp.size() - 1] - tmp[0]));
 }
 
 // Exception

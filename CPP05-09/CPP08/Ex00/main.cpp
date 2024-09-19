@@ -6,13 +6,14 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 22:31:54 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/04 23:33:55 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 11:18:32 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
 #include <list>
+#include <stack>
 
 int	main(void)
 {

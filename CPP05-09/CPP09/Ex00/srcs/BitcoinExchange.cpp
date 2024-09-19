@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/18 18:55:41 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/18 21:24:42 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ BitcoinExchange::BitcoinExchange()
 		if (this->in_normData(line, 0))
 		{
 			size_t pos = (line).find(",");
-			std::string tmp = line.substr(0, pos);
-			double value_btc = std::atof(line.c_str() + pos);
-			std::cout << tmp << std::endl;
+			size_t pos2 = (line).find_last_of(" \n\t");
+			std::string tmp = line.substr(pos2 + 1, pos - 1);
+			double value_btc = std::atof(line.c_str() + (pos + 1));
+			// std::cout << value_btc << std::endl;
 			(void)value_btc;
+			(void)tmp;
 			// if (this->correctData(tmp) && value_btc >= 0)
-			// 	this->dataCsv[tmp] = value_btc;
+			this->dataCsv[tmp] = value_btc;
 		}
 	}
 	dataFile.close();
@@ -99,7 +101,10 @@ bool				BitcoinExchange::in_normData(std::string line, int method)
 			return (false);
 		if (method == 0)
 		{
+			size_t pos_start_data = (line).find_last_of(" \n\t") + 1;
 			size_t pos3 = (line).find_last_of(",");
+			if (pos3 - pos_start_data != 10)
+				return (false);
 			if (pos != 0 && pos2 != pos
 				&& (pos2 - (pos + 1)) == 2 && (pos3 - (pos2 + 1)) == 2)
 				return (true);
@@ -108,7 +113,10 @@ bool				BitcoinExchange::in_normData(std::string line, int method)
 		{
 			if (14 > line.size())
 				return (false);
+			size_t pos_start_data = (line).find_last_of(" \n\t") + 1;
 			size_t pos3 = (line).find_last_of("|");
+			if (pos3 - pos_start_data != 12)
+				return (false);
 			if (pos != 0 && pos2 != pos
 				&& (pos2 - (pos + 1)) == 2 && (pos3 - (pos2 + 1)) == 3)
 				return (true);
