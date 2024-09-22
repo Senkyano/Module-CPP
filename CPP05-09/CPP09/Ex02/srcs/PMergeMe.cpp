@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:59:24 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/18 13:35:32 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/22 23:33:00 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,116 @@ void	PMergeMe::fillContainerVec(std::vector<int> &container)
 			container.push_back(atoi(tmp.c_str()));
 		}
 	}
+}
+
+void	PMergeMe::sortVector(std::vector<int> &container)
+{
+	if (this->containerSorted(container) || container.size() < 2)
+		return ;
+	
+	std::vector<int>			largestContain;
+	std::vector<int>			smallestContain;
+	std::vector<int>::iterator	it;
+
+	for (it = container.begin(); it != container.end(); it += 2)
+	{
+		if (it == container.end() - 1)
+		{
+			smallestContain.push_back(*it);
+			break ;
+		}
+		else if ((*it) > *(it + 1))
+		{
+			largestContain.push_back(*it);
+			smallestContain.push_back(*(it + 1));
+		}
+		else if ((*it) < *(it + 1))
+		{
+			largestContain.push_back(*(it + 1));
+			smallestContain.push_back(*it);
+		}
+		if (it == container.end() - 2)
+			break ;
+	}
+	this->sortVector(largestContain);
+	for (it = smallestContain.begin(); it != smallestContain.end(); it++)
+	{
+		std::size_t	start = 0, end = largestContain.size(), mid;
+		while (end > start)
+		{
+			mid = (start + end) / 2;
+			if (*it < largestContain[mid])
+				end = mid;
+			else if (*it >= largestContain[mid])
+				start = mid + 1;
+		}
+		largestContain.insert(largestContain.begin() + start, *it);
+	}
+	container = largestContain;
+}
+
+// LIST
+void	PMergeMe::fillContainerDeque(std::deque<int> &container)
+{
+	for (unsigned int i = 0; i < this->lstNum.length(); ++i)
+	{
+		if (isdigit(this->lstNum[i]))
+		{
+			std::string tmp;
+			while (isdigit(this->lstNum[i]))
+			{
+				tmp += this->lstNum[i];
+				++i;
+			}
+			container.push_back(atoi(tmp.c_str()));
+		}
+	}
+}
+
+void	PMergeMe::sortDeque(std::deque<int> &container)
+{
+	if (this->containerSorted(container) || container.size() < 2)
+		return ;
+	
+	std::deque<int>			largestContain;
+	std::deque<int>			smallestContain;
+	std::deque<int>::iterator	it;
+
+	for (it = container.begin(); it != container.end(); it += 2)
+	{
+		if (it == container.end() - 1)
+		{
+			smallestContain.push_back(*it);
+			break ;
+		}
+		else if ((*it) > *(it + 1))
+		{
+			largestContain.push_back(*it);
+			smallestContain.push_back(*(it + 1));
+		}
+		else if ((*it) < *(it + 1))
+		{
+			largestContain.push_back(*(it + 1));
+			smallestContain.push_back(*it);
+		}
+		if (it == container.end() - 2)
+			break ;
+	}
+	this->sortDeque(largestContain);
+	for (it = smallestContain.begin(); it != smallestContain.end(); it++)
+	{
+		std::size_t	start = 0, end = largestContain.size(), mid;
+		while (end > start)
+		{
+			mid = (start + end) / 2;
+			if (*it < largestContain[mid])
+				end = mid;
+			else if (*it >= largestContain[mid])
+				start = mid + 1;
+		}
+		largestContain.insert(largestContain.begin() + start, *it);
+	}
+	container = largestContain;
 }
 
 // EXCEPTION
