@@ -6,7 +6,7 @@
 /*   By: rihoy <rihoy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:18:04 by rihoy             #+#    #+#             */
-/*   Updated: 2024/09/19 13:56:33 by rihoy            ###   ########.fr       */
+/*   Updated: 2024/09/19 22:45:47 by rihoy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void			BitcoinExchange::evolution_Wallet(std::string file)
 			{
 				std::cout << tmp << " => ";
 				double taux = this->srch_prochData(tmp);
-				std::cout << taux << " => " << taux * value_btc << std::endl;
+				std::cout << value_btc << " => " << taux * value_btc << std::endl;
 			}
 			else
 			{
